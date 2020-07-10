@@ -1,0 +1,113 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+    <div class="actions-wrapper">
+        <a href="#" class="btn btn-primary"
+           data-toggle="modal"
+           data-target="#objectModal"
+           data-title="{{ _('Новый параметр') }}"
+           data-action="{{ url_for('jobs') }}"
+        >{{ _('Добавить') }}</a>
+    </div>
+
+    <table class="table" id="data_table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ _('Наименование') }}</th>
+                <th>{{ _('Дата начала') }}</th>
+                <th>{{ _('Дата окончания') }}</th>
+                <th>{{ _('Описание') }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.start_date.year }}</td>
+                    <td>{{ item.end_date.year if item.end_date else _('по настоящее время') }}</td>
+                    <td class="data-cell">{{ item.description }}</td>
+                    <td>
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#objectModal"
+                           data-action="{{ url_for('edit_job', job_id=item.id) }}"
+                           data-title="{{ _('Редактирование') }}"
+                           data-name="{{ item.name }}"
+                           data-description="{{ item.description }}"
+                           data-start_date="{{ item.start_date.strftime('%Y-%m-%d') }}"
+                           data-end_date="{{ item.end_date.strftime('%Y-%m-%d') if item.end_date else '' }}"
+                           data-language="{{ item.language }}"
+                        ><img src="{{ url_for('static', filename='admin/icons/pencil-square.svg') }}" alt="" width="16" height="16" title="{{ _('Редактировать') }}"></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#deleteObjectModal"
+                           data-action="{{ url_for('delete_job', job_id=item.id) }}"
+                           data-title="{{ _('Подтвердите удаление') }}"
+                           data-id={{ item.id }}
+                        ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="objectModal" tabindex="-1" role="dialog" aria-labelledby="objectModalLabel"
+         aria-hidden="true">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="objectModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {{ form.name.label }} {% if form.name.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.name(class='form-control') }}
+                            {% if form.name.errors %}{{ error.list(form.name.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.description.label }} {% if form.description.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.description(class='form-control') }}
+                            {% if form.description.errors %}{{ error.list(form.description.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.start_date.label }} {% if form.start_date.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.start_date(class='form-control') }}
+                            {% if form.start_date.errors %}{{ error.list(form.start_date.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.end_date.label }} {% if form.end_date.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.end_date(class='form-control') }}
+                            {% if form.end_date.errors %}{{ error.list(form.end_date.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.language.label }}
+                            {{ form.language(class='form-control') }}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Закрыть') }}</button>
+                        {{ form.submit(class='btn btn-primary') }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function firePageEvents() {
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,506 @@
+# English translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-07-10 15:35+0400\n"
+"PO-Revision-Date: 2020-07-06 11:39+0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: cvapp/__init__.py:23
+msgid "Пожалуйста, авторизуйтесь, чтобы получить доступ к этой странице"
+msgstr "Please, authorize yourself to get access to this web page"
+
+#: cvapp/forms/forms.py:43 cvapp/templates/admin/settings.html:17
+msgid "Наименование параметра"
+msgstr "Param name"
+
+#: cvapp/forms/forms.py:44 cvapp/templates/admin/settings.html:18
+msgid "Значение параметра"
+msgstr "Param value"
+
+#: cvapp/forms/forms.py:45
+msgid "Загрузить файл"
+msgstr "Upload file"
+
+#: cvapp/forms/forms.py:46 cvapp/forms/forms.py:55 cvapp/forms/forms.py:64
+#: cvapp/forms/forms.py:74 cvapp/forms/forms.py:81 cvapp/forms/forms.py:94
+msgid "Сохранить"
+msgstr "Save"
+
+#: cvapp/forms/forms.py:50 cvapp/forms/forms.py:59 cvapp/forms/forms.py:68
+#: cvapp/forms/forms.py:78 cvapp/forms/forms.py:88
+#: cvapp/templates/admin/certs.html:17 cvapp/templates/admin/education.html:17
+#: cvapp/templates/admin/jobs.html:17 cvapp/templates/admin/portfolio.html:19
+#: cvapp/templates/admin/skills.html:17
+msgid "Наименование"
+msgstr "Name"
+
+#: cvapp/forms/forms.py:51 cvapp/forms/forms.py:60 cvapp/forms/forms.py:70
+#: cvapp/forms/forms.py:90 cvapp/templates/admin/education.html:20
+#: cvapp/templates/admin/jobs.html:20 cvapp/templates/admin/skills.html:18
+msgid "Описание"
+msgstr "Description"
+
+#: cvapp/forms/forms.py:52 cvapp/forms/forms.py:61
+#: cvapp/templates/admin/education.html:18 cvapp/templates/admin/jobs.html:18
+msgid "Дата начала"
+msgstr "Start date"
+
+#: cvapp/forms/forms.py:53 cvapp/forms/forms.py:62
+#: cvapp/templates/admin/education.html:19 cvapp/templates/admin/jobs.html:19
+msgid "Дата окончания"
+msgstr "End date"
+
+#: cvapp/forms/forms.py:54 cvapp/forms/forms.py:63
+msgid "Язык"
+msgstr "Language"
+
+#: cvapp/forms/forms.py:69 cvapp/forms/forms.py:89
+msgid "Наименование на английском"
+msgstr "English name"
+
+#: cvapp/forms/forms.py:71 cvapp/forms/forms.py:91
+msgid "Описание на английском"
+msgstr "English description"
+
+#: cvapp/forms/forms.py:72 cvapp/templates/admin/skills.html:19
+msgid "Проценты"
+msgstr "Percents"
+
+#: cvapp/forms/forms.py:73 cvapp/templates/admin/skills.html:20
+msgid "Тип"
+msgstr "Type"
+
+#: cvapp/forms/forms.py:79 cvapp/templates/admin/certs.html:18
+#: cvapp/templates/admin/portfolio.html:20
+msgid "Ссылка"
+msgstr "Link"
+
+#: cvapp/forms/forms.py:80
+msgid "Файл"
+msgstr "File"
+
+#: cvapp/forms/forms.py:85
+msgid "Порядок вывода"
+msgstr "Order"
+
+#: cvapp/forms/forms.py:86 cvapp/templates/admin/portfolio.html:18
+msgid "Категория"
+msgstr "Category"
+
+#: cvapp/forms/forms.py:87
+msgid "Категория на английском"
+msgstr "English category"
+
+#: cvapp/forms/forms.py:92
+msgid "Ссылка на проект"
+msgstr "Project link"
+
+#: cvapp/forms/forms.py:93 cvapp/templates/admin/certs.html:19
+#: cvapp/templates/admin/portfolio.html:21
+msgid "Изображение"
+msgstr "Picture"
+
+#: cvapp/forms/forms.py:98 cvapp/templates/admin/feedback.html:8
+#: cvapp/templates/public/_about.html:14
+msgid "Имя"
+msgstr "Name"
+
+#: cvapp/forms/forms.py:99 cvapp/templates/admin/feedback.html:9
+msgid "E-mail"
+msgstr ""
+
+#: cvapp/forms/forms.py:100 cvapp/templates/admin/feedback.html:10
+msgid "Сообщение"
+msgstr "Message"
+
+#: cvapp/forms/forms.py:101
+msgid "Отправить сообщение"
+msgstr "Send message"
+
+#: cvapp/routes/errors.py:8
+msgid "Извините, страница не найдена."
+msgstr "Sorry, page can not be found."
+
+#: cvapp/routes/errors.py:14
+msgid "Извините, что-то пошло не так"
+msgstr "Sorry, something went wrong"
+
+#: cvapp/routes/public.py:22
+msgid "Сообщение с сайта Podrabinovich.RU"
+msgstr "Message from Podrabinovich.RU web-site"
+
+#: cvapp/routes/public.py:30
+msgid "Сообщение было успешно отослано!"
+msgstr "The message was successfully sent!"
+
+#: cvapp/templates/error.html:40
+msgid "Ошибка!"
+msgstr "Error!"
+
+#: cvapp/templates/error.html:43
+msgid "На главную"
+msgstr "Home"
+
+#: cvapp/templates/admin/_modals.html:14
+msgid "Вы действительно хотите удалить объект"
+msgstr "Do you really want to remove the object"
+
+#: cvapp/templates/admin/_modals.html:18 cvapp/templates/admin/certs.html:84
+#: cvapp/templates/admin/education.html:98 cvapp/templates/admin/jobs.html:98
+#: cvapp/templates/admin/portfolio.html:124
+#: cvapp/templates/admin/settings.html:82 cvapp/templates/admin/skills.html:105
+msgid "Закрыть"
+msgstr "Close"
+
+#: cvapp/templates/admin/_modals.html:19
+msgid "Да, удалить"
+msgstr "Yes, delete"
+
+#: cvapp/templates/admin/_nav.html:11
+msgid "Учеба"
+msgstr "Learning"
+
+#: cvapp/templates/admin/_nav.html:11
+msgid "текущий"
+msgstr "current"
+
+#: cvapp/templates/admin/_nav.html:14
+msgid "Работа"
+msgstr "Work"
+
+#: cvapp/templates/admin/_nav.html:17
+msgid "Скилы"
+msgstr "Skills"
+
+#: cvapp/templates/admin/_nav.html:20
+msgid "Сертификаты"
+msgstr "Certificates"
+
+#: cvapp/templates/admin/_nav.html:23 cvapp/templates/public/_nav.html:6
+msgid "Портфолио"
+msgstr "Portfolio"
+
+#: cvapp/templates/admin/_nav.html:26
+msgid "Сообщения"
+msgstr "Messages"
+
+#: cvapp/templates/admin/_nav.html:29
+msgid "Настройки"
+msgstr "Settings"
+
+#: cvapp/templates/admin/_nav.html:35
+msgid "Вход"
+msgstr "Sign In"
+
+#: cvapp/templates/admin/_nav.html:37
+msgid "Выход"
+msgstr "Sign Out"
+
+#: cvapp/templates/admin/base.html:5
+msgid "CV Admin Panel"
+msgstr ""
+
+#: cvapp/templates/admin/base.html:55
+msgid "Данные отсутствуют в таблице"
+msgstr "There is no any data in the table"
+
+#: cvapp/templates/admin/base.html:56
+msgid "Отображение _START_ для _END_ из _TOTAL_ записей"
+msgstr "Displaying _START_ for _END_ from _TOTAL_ rows"
+
+#: cvapp/templates/admin/base.html:57
+msgid "Показано с 0 по 0 из 0 записей"
+msgstr "Showed from 0 to 0 from 0 rows"
+
+#: cvapp/templates/admin/base.html:58
+msgid "(отфильтровано из _MAX_ всего записей)"
+msgstr "(filtered from _MAX_ total rows)"
+
+#: cvapp/templates/admin/base.html:61
+msgid "Показать _MENU_ записей"
+msgstr "Show _MENU_ rows"
+
+#: cvapp/templates/admin/base.html:62
+msgid "Загрузка..."
+msgstr "Loading..."
+
+#: cvapp/templates/admin/base.html:63
+msgid "Обработка..."
+msgstr "Processing..."
+
+#: cvapp/templates/admin/base.html:64
+msgid "Поиск:"
+msgstr "Search:"
+
+#: cvapp/templates/admin/base.html:65
+msgid "Совпадающих записей не найдено"
+msgstr "No matching rows found"
+
+#: cvapp/templates/admin/base.html:67
+msgid "Первая"
+msgstr "First"
+
+#: cvapp/templates/admin/base.html:68
+msgid "Последняя"
+msgstr "Last"
+
+#: cvapp/templates/admin/base.html:69
+msgid "Следующая"
+msgstr "Next"
+
+#: cvapp/templates/admin/base.html:70
+msgid "Предыдущая"
+msgstr "Previous"
+
+#: cvapp/templates/admin/base.html:73
+msgid ": активировать для сортировки столбца по возрастанию"
+msgstr ": activate to sort column ascending"
+
+#: cvapp/templates/admin/base.html:74
+msgid ": активировать для сортировки столбца по убыванию"
+msgstr ": activate to sort column descending"
+
+#: cvapp/templates/admin/certs.html:8 cvapp/templates/admin/education.html:8
+#: cvapp/templates/admin/jobs.html:8 cvapp/templates/admin/portfolio.html:8
+#: cvapp/templates/admin/settings.html:8 cvapp/templates/admin/skills.html:8
+msgid "Новый параметр"
+msgstr "New parameter"
+
+#: cvapp/templates/admin/certs.html:10 cvapp/templates/admin/education.html:10
+#: cvapp/templates/admin/jobs.html:10 cvapp/templates/admin/portfolio.html:10
+#: cvapp/templates/admin/settings.html:10 cvapp/templates/admin/skills.html:10
+msgid "Добавить"
+msgstr "Add"
+
+#: cvapp/templates/admin/certs.html:35 cvapp/templates/admin/education.html:37
+#: cvapp/templates/admin/jobs.html:37 cvapp/templates/admin/portfolio.html:39
+#: cvapp/templates/admin/skills.html:37
+msgid "Редактирование"
+msgstr "Edit"
+
+#: cvapp/templates/admin/certs.html:38 cvapp/templates/admin/education.html:43
+#: cvapp/templates/admin/jobs.html:43 cvapp/templates/admin/portfolio.html:48
+#: cvapp/templates/admin/settings.html:36 cvapp/templates/admin/skills.html:44
+msgid "Редактировать"
+msgstr "Edit"
+
+#: cvapp/templates/admin/certs.html:44 cvapp/templates/admin/education.html:49
+#: cvapp/templates/admin/feedback.html:26 cvapp/templates/admin/jobs.html:49
+#: cvapp/templates/admin/portfolio.html:54
+#: cvapp/templates/admin/settings.html:42 cvapp/templates/admin/skills.html:50
+msgid "Подтвердите удаление"
+msgstr "Confirm delete"
+
+#: cvapp/templates/admin/certs.html:46 cvapp/templates/admin/education.html:51
+#: cvapp/templates/admin/feedback.html:28 cvapp/templates/admin/jobs.html:51
+#: cvapp/templates/admin/portfolio.html:56
+#: cvapp/templates/admin/settings.html:44 cvapp/templates/admin/skills.html:52
+msgid "Удалить"
+msgstr "Delete"
+
+#: cvapp/templates/admin/education.html:30 cvapp/templates/admin/jobs.html:30
+msgid "по настоящее время"
+msgstr "Until now"
+
+#: cvapp/templates/admin/login.html:5
+msgid "Авторизация"
+msgstr "Authorize"
+
+#: cvapp/templates/admin/portfolio.html:17
+msgid "Порядок"
+msgstr "Order"
+
+#: cvapp/templates/admin/settings.html:33
+msgid "Редактирование параметра"
+msgstr "Edit param"
+
+#: cvapp/templates/public/_about.html:5
+msgid "Обо мне"
+msgstr "About myself"
+
+#: cvapp/templates/public/_about.html:15
+msgid "Возраст"
+msgstr "Age"
+
+#: cvapp/templates/public/_about.html:16
+msgid "Специальность"
+msgstr "Specialization"
+
+#: cvapp/templates/public/_about.html:17
+msgid "Страна"
+msgstr "Country"
+
+#: cvapp/templates/public/_about.html:18
+msgid "Город"
+msgstr "City"
+
+#: cvapp/templates/public/_about.html:22
+msgid "Скачать резюме"
+msgstr "Download CV"
+
+#: cvapp/templates/public/_certification.html:5
+msgid "Самообразование - чем я горжусь"
+msgstr "Self-education - what I am proud of"
+
+#: cvapp/templates/public/_contacts.html:5 cvapp/templates/public/_nav.html:7
+msgid "Контакты"
+msgstr "Contacts"
+
+#: cvapp/templates/public/_contacts.html:26
+msgid "Адрес"
+msgstr "Address"
+
+#: cvapp/templates/public/_contacts.html:27
+msgid "Россия, Саратов"
+msgstr "Russia, Saratov"
+
+#: cvapp/templates/public/_exp_and_edu.html:7
+msgid "Опыт работы"
+msgstr "Experience"
+
+#: cvapp/templates/public/_exp_and_edu.html:14
+#: cvapp/templates/public/_exp_and_edu.html:31
+msgid "По настоящее время"
+msgstr "Until now"
+
+#: cvapp/templates/public/_exp_and_edu.html:24
+msgid "Образование"
+msgstr "Education"
+
+#: cvapp/templates/public/_intro.html:6
+msgid "Александр Подрабинович"
+msgstr "Alex Podrabinovich"
+
+#: cvapp/templates/public/_intro.html:8
+msgid "Web-разработчик с опытом работы 15+ лет"
+msgstr "Web-developer with more than 15+ years of experience"
+
+#: cvapp/templates/public/_intro.html:9
+msgid "Саратов, Россия"
+msgstr "Saratov, Russia"
+
+#: cvapp/templates/public/_languages.html:5
+msgid "Владение языками"
+msgstr "Languages"
+
+#: cvapp/templates/public/_nav.html:4
+msgid "Резюме"
+msgstr "CV"
+
+#: cvapp/templates/public/_nav.html:5
+msgid "Услуги"
+msgstr "Services"
+
+#: cvapp/templates/public/_portfolio.html:5
+msgid "Мои работы"
+msgstr "My works"
+
+#: cvapp/templates/public/_portfolio.html:7
+msgid ""
+"В данном разделе я мог бы выставить не один десяток проектов над которыми"
+" работал. Но, чтобы соблюсти лаконичность и сэкономить ваше время, здесь "
+"будут лишь самые-самые работы, которыми я горжусь."
+msgstr ""
+"Within this section, I could post tons of web-sites that I've  developed."
+" But to save your time and be brief here  will be the most important "
+"projects for me which I'm proud of."
+
+#: cvapp/templates/public/_portfolio.html:41
+msgid "Посмотреть проект"
+msgstr "View project"
+
+#: cvapp/templates/public/_services.html:5
+msgid "Мои услуги"
+msgstr "My services"
+
+#: cvapp/templates/public/_services.html:10
+msgid "Web разработка"
+msgstr "Web development"
+
+#: cvapp/templates/public/_services.html:11
+msgid ""
+"Создание веб проектов любого уровня сложности: от корпоративного сайта до"
+" сложного  веб сервиса."
+msgstr ""
+"Developing web projects of any types: from corporate web-site to a "
+"complex web-service."
+
+#: cvapp/templates/public/_services.html:15
+msgid "Программирование"
+msgstr "Development"
+
+#: cvapp/templates/public/_services.html:16
+msgid ""
+"Разработка интеграционных модулей, платежных шлюзов, работа с различными "
+"API."
+msgstr "Integration modules development, payment gateways, API implementation. "
+
+#: cvapp/templates/public/_services.html:20
+msgid "Фронтэнд"
+msgstr "Frontend"
+
+#: cvapp/templates/public/_services.html:21
+msgid "Адаптивная кроссбраузерная верстка."
+msgstr "Adaptive cross-browser layout."
+
+#: cvapp/templates/public/_services.html:25
+msgid "Повышение конверсии"
+msgstr "Increase conversion rate"
+
+#: cvapp/templates/public/_services.html:26
+msgid ""
+"Интеграция бизнеса с CRM: Bitrix24, AMO CRM, Gentleman CRM. Оптимизация "
+"для поисковых систем - вывод в зелёную зону Google Page Speed и пр."
+msgstr ""
+"Business integration with CRM: Bitrix24, AMO CRM, Gentleman CRM. "
+"Optimization for search engine systems by making web-site fit green zone "
+"of Google Page Speed service, etc."
+
+#: cvapp/templates/public/_services.html:30
+msgid "Отладка"
+msgstr "Debugging"
+
+#: cvapp/templates/public/_services.html:31
+msgid "Поиск и устранение проблемных мест в проекте."
+msgstr "Finding and fixing problem parts of a project."
+
+#: cvapp/templates/public/_services.html:35
+msgid "Поддержка"
+msgstr "Support"
+
+#: cvapp/templates/public/_services.html:36
+msgid "Техническая поддержка и ведение проекта."
+msgstr "Technical support"
+
+#: cvapp/templates/public/_services.html:40
+msgid "Чат боты"
+msgstr "Chat bots"
+
+#: cvapp/templates/public/_services.html:41
+msgid "Разработка Telegram чат-ботов с умной логикой."
+msgstr "Developing of Telegram chat-bots with complex logic."
+
+#: cvapp/templates/public/_skills.html:5
+msgid "Техничский опыт в годах"
+msgstr "Technical experience in years"
+
+#: cvapp/templates/public/base.html:50
+msgid "загрузка"
+msgstr "loading"
+
+#~ msgid ": activate to sort column descending"
+#~ msgstr ""
+

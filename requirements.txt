@@ -1,0 +1,11 @@
+flask
+flask-wtf
+confuse
+wtforms
+flask-sqlalchemy
+flask-migrate
+psycopg2
+flask-login
+email-validator
+flask-babel
+flask-mail

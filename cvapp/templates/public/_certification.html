@@ -1,0 +1,31 @@
+<!-- Certs -->
+<div class="section certifications">
+    <div class="content">
+        <div class="title">
+            <div class="title_inner">{{ _('Самообразование - чем я горжусь') }}</div>
+            <div>
+                {{ settings.cert_intro_en|nl2br if lang == 'en' else settings.cert_intro|nl2br }}
+                <ul class="cert-list">
+                    {% for cert in certs %}
+                        <li>
+                            {% if cert.link %}
+                                <a href="{{ cert.link }}" target="_blank" rel="nofollow">{{ cert.name }}</a>
+                            {% else %}
+                                <span>{{ cert.name }}</span>
+                            {% endif %}
+
+                            {% if cert.image %}
+                                <div>
+                                    <a href="{{ config.UPLOAD_WEB_PATH }}/{{ cert.image }}" class="name has-popup-image">
+                                        <img src="{{ config.UPLOAD_WEB_PATH }}/{{ cert.image }}" alt="" style="max-width:300px;">
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+                {{ settings.cert_outro_en|nl2br if lang == 'en' else settings.cert_outro|nl2br }}
+            </div>
+        </div>
+    </div>
+</div>

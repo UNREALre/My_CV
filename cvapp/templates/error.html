@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+	<!-- Basic -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{{ title }}</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/glitche-basic.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/glitche-layout.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/ionicons.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/magnific-popup.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/animate.css') }}" />
+
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/template-dark/dark.css') }}" />
+
+
+	<!--[if lt IE 9]>
+	<script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='public/images/favicons/favicon.ico') }}">
+
+</head>
+
+<body class="home">
+
+    <div style="max-width: 1024px; margin:0 auto;">
+        <h1>{{ _('Ошибка!') }}</h1>
+        <div>{{ content }}</div>
+
+        <div><br><br><a href="{{ url_for('index') }}">{{ _('На главную') }}</a></div>
+    </div>
+
+</body>
+</html>

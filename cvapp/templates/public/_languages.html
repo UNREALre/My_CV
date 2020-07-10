@@ -1,0 +1,24 @@
+			<!-- Skills -->
+			<div class="section skills">
+				<div class="content">
+					<div class="title">
+						<div class="title_inner">{{ _('Владение языками') }}</div>
+					</div>
+					<div class="skills dotted">
+						<ul>
+                            {% for skill in skills %}
+                                {% if skill.type == "lang" %}
+                                    <li>
+                                        <div class="name">{{ skill.name_en if lang == 'en' and skill.name_en else skill.name }}</div>
+                                        <div class="progress">
+                                            <div class="percentage" style="width:{{ skill.percentage }}%;">
+                                                <span class="percent {% if skill.description|int < 3 %}extra-padding{% endif %}">{{ skill.description_en if lang == 'en' and skill.description_en else skill.description }}</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>

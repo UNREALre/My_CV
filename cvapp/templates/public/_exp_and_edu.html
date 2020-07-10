@@ -1,0 +1,41 @@
+			<!-- Resume -->
+			<div class="section resume">
+				<div class="content">
+					<div class="cols">
+						<div class="col col-md">
+							<div class="title">
+								<div class="title_inner">{{ _('Опыт работы') }}</div>
+							</div>
+                            <div class="resume-items">
+                                {% for job in jobs %}
+                                    <div class="resume-item {% if not job.end_date %}active{% endif %}">
+                                        <div class="date">
+                                            {{ job.start_date.strftime('%Y') }} -
+                                            {{ job.end_date.strftime('%Y') if job.end_date else _('По настоящее время') }}
+                                        </div>
+                                        <div class="name">{{ job.name }}</div>
+                                        <p>{{ job.description }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+						</div>
+						<div class="col col-md">
+							<div class="title">
+								<div class="title_inner">{{ _('Образование') }}</div>
+							</div>
+							<div class="resume-items">
+                                {% for school in schools %}
+                                    <div class="resume-item {% if not school.end_date %}active{% endif %}">
+                                        <div class="date">
+                                            {{ school.start_date.strftime('%Y') }} -
+                                            {{ school.end_date.strftime('%Y') if school.end_date else _('По настоящее время') }}
+                                        </div>
+                                        <div class="name">{{ school.name }}</div>
+                                        <p>{{ school.description }}</p>
+                                    </div>
+                                {% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>

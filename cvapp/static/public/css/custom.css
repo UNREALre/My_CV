@@ -1,0 +1,37 @@
+.languages {
+    float: left;
+}
+.languages .active {
+    color: #f26b38;
+    font-weight: bold;
+}
+.skills.cols2 ul li {
+    position: relative;
+    padding: 0 30px 30px 0;
+    width: 50%;
+    display: inline-block;
+}
+
+.skills ul li .progress .percentage .percent.extra-padding {
+    right: -80px;
+}
+
+.cert-list {
+    margin-left: 30px;
+}
+.cert-list li {
+    margin-bottom: 20px;
+}
+
+.jobs-description {
+    margin-top: 20px;
+}
+
+.list-group-item-danger {
+    color: red;
+}
+
+.section.contacts .alert-success {
+    display: block;
+    color: #FFF;
+}

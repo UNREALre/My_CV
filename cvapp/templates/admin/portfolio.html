@@ -1,0 +1,139 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+    <div class="actions-wrapper">
+        <a href="#" class="btn btn-primary"
+           data-toggle="modal"
+           data-target="#objectModal"
+           data-title="{{ _('Новый параметр') }}"
+           data-action="{{ url_for('portfolio') }}"
+        >{{ _('Добавить') }}</a>
+    </div>
+
+    <table class="table" id="data_table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ _('Порядок') }}</th>
+                <th>{{ _('Категория') }}</th>
+                <th>{{ _('Наименование') }}</th>
+                <th>{{ _('Ссылка') }}</th>
+                <th>{{ _('Изображение') }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.order }}</td>
+                    <td>{{ item.category }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.link }}</td>
+                    <td>{% if item.image %}<img src="{{ config.UPLOAD_WEB_PATH }}/{{ item.image  }}" alt="" style="max-width:300px;">{% endif %}</td>
+                    <td>
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#objectModal"
+                           data-action="{{ url_for('edit_portfolio', portfolio_id=item.id) }}"
+                           data-title="{{ _('Редактирование') }}"
+                           data-order="{{ item.order }}"
+                           data-name="{{ item.name }}"
+                           data-name_en="{{ item.name_en }}"
+                           data-category="{{ item.category }}"
+                           data-category_en="{{ item.category_en }}"
+                           data-description="{{ item.description }}"
+                           data-description_en="{{ item.description_en }}"
+                           data-link="{{ item.link }}"
+                        ><img src="{{ url_for('static', filename='admin/icons/pencil-square.svg') }}" alt="" width="16" height="16" title="{{ _('Редактировать') }}"></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#deleteObjectModal"
+                           data-action="{{ url_for('delete_portfolio', portfolio_id=item.id) }}"
+                           data-title="{{ _('Подтвердите удаление') }}"
+                           data-id={{ item.id }}
+                        ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="objectModal" tabindex="-1" role="dialog" aria-labelledby="objectModalLabel"
+         aria-hidden="true">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="objectModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {{ form.order.label }} {% if form.order.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.order(class='form-control') }}
+                            {% if form.order.errors %}{{ error.list(form.order.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.category.label }} {% if form.category.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.category(class='form-control') }}
+                            {% if form.category.errors %}{{ error.list(form.name.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.category_en.label }} {% if form.category_en.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.category_en(class='form-control') }}
+                            {% if form.category_en.errors %}{{ error.list(form.category_en.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.name.label }} {% if form.name.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.name(class='form-control') }}
+                            {% if form.name.errors %}{{ error.list(form.name.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.name_en.label }} {% if form.name_en.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.name_en(class='form-control') }}
+                            {% if form.name_en.errors %}{{ error.list(form.name_en.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.description.label }} {% if form.description.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.description(class='form-control') }}
+                            {% if form.description.errors %}{{ error.list(form.description.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.description_en.label }} {% if form.description_en.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.description_en(class='form-control') }}
+                            {% if form.description_en.errors %}{{ error.list(form.description_en.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.link.label }} {% if form.link.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.link(class='form-control') }}
+                            {% if form.link.errors %}{{ error.list(form.link.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.image_file.label }} {% if form.image_file.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.image_file(class='form-control') }}
+                            {% if form.image_file.errors %}{{ error.list(form.image_file.errors) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Закрыть') }}</button>
+                        {{ form.submit(class='btn btn-primary') }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function firePageEvents() {
+        }
+    </script>
+{% endblock %}

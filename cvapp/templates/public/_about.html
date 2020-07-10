@@ -1,0 +1,26 @@
+			<!-- About -->
+			<div class="section about" id="section-resume">
+				<div class="content">
+					<div class="title">
+						<div class="title_inner">{{ _('Обо мне') }}</div>
+					</div>
+					<div class="image">
+						<img src="{{ config.UPLOAD_WEB_PATH }}/{{ settings.ava }}" alt="" />
+					</div>
+					<div class="desc">
+						<p>{{ settings.about|nl2br if lang == 'ru' else settings.about_en|nl2br}}</p>
+						<div class="info-list">
+							<ul>
+								<li><strong>{{ _('Имя') }}:</strong> {{ settings.about_name if lang == 'ru' else settings.about_name_en }}</li>
+								<li><strong>{{ _('Возраст') }}:</strong> {{ settings.about_age }}</li>
+								<li><strong>{{ _('Специальность') }}:</strong> {{ settings.about_job if lang == 'ru' else settings.about_job_en }}</li>
+								<li><strong>{{ _('Страна') }}:</strong> {{ settings.about_country if lang == 'ru' else settings.about_country_en }}</li>
+								<li><strong>{{ _('Город') }}: </strong> {{ settings.about_city if lang == 'ru' else settings.about_city_en }}</li>
+								<li><strong>E-mail:</strong> <a href="mailto:{{ settings.about_email }}">{{ settings.about_email }}</a></li>
+							</ul>
+						</div>
+						<div class="bts"><a href="#" class="btn fill" data-text="{{ _('Скачать резюме') }}">{{ _('Скачать резюме') }}</a></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>

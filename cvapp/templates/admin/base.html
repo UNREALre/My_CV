@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ _('CV Admin Panel') }}</title>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/bootstrap.min.css', v=times['admin/css/bootstrap.min.css']) }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/custom.css', v=times['admin/css/custom.css']) }}">
+    </head>
+<body>
+    {% import 'macros/form_error.html' as error %}
+
+    <div class="container">
+        {% set flash_messages = get_flashed_messages() %}
+        {% if flash_messages %}
+                {% for message in flash_messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+        {% endif %}
+
+        <div>
+            {% include 'admin/_nav.html' %}
+            <div class="main-content-wrapper">
+                {% block body %}{% endblock body %}
+            </div>
+        </div>
+    </div>
+
+    {% include 'admin/_modals.html' %}
+
+    <script src="{{ url_for('static', filename='admin/js/jq.js') }}"></script>
+    <script src="{{ url_for('static', filename='admin/js/bootstrap.min.js') }}"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/datatable.css') }}" type="text/css">
+    <script src="{{ url_for('static', filename='admin/js/datatable.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('#data_table').DataTable(
+                {
+                    order: [[0, "asc"]],
+                    info: false,
+                    pageLength: 25,
+                    fnDrawCallback: function( oSettings ) {
+                        firePageEvents();
+                    }
+                }
+            );
+        });
+
+        // Default settings
+        $.extend(true, $.fn.dataTable.defaults, {
+            language: {
+                decimal: "",
+                emptyTable: "{{ _('Данные отсутствуют в таблице') }}",
+                info: "{{ _('Отображение _START_ для _END_ из _TOTAL_ записей') }}",
+                infoEmpty: "{{ _('Показано с 0 по 0 из 0 записей') }}",
+                infoFiltered: "{{ _('(отфильтровано из _MAX_ всего записей)') }}",
+                infoPostFix: "",
+                thousands: ",",
+                lengthMenu: "{{ _('Показать _MENU_ записей') }}",
+                loadingRecords: "{{ _('Загрузка...') }}",
+                processing: "{{ _('Обработка...') }}",
+                search: "{{ _('Поиск:') }}",
+                zeroRecords: "{{ _('Совпадающих записей не найдено') }}",
+                paginate: {
+                    first: "{{ _('Первая') }}",
+                    last: "{{ _('Последняя') }}",
+                    next: "{{ _('Следующая') }}",
+                    previous: "{{ _('Предыдущая') }}"
+                },
+                aria: {
+                    sortAscending: "{{ _(': активировать для сортировки столбца по возрастанию') }}",
+                    sortDescending: "{{ _(': активировать для сортировки столбца по убыванию') }}"
+                }
+            }
+        });
+
+        $("document").ready(function(){
+            $('#objectModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var title = button.data('title'); // Extract info from data-* attributes
+                var action = button.data('action');
+                var modal = $(this);
+                var form = modal.find('form');
+                form.attr('action', action)
+                modal.find('.modal-title').text(title);
+                modal.find('form')[0].reset();
+
+                $.each(button.data(), function(i, e) {
+                   if (form.find("#" + i).length) {
+                       form.find("#" + i).val(e);
+                   }
+                });
+            });
+
+            $('#deleteObjectModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var title = button.data('title'), action = button.data('action'), id = button.data('id');
+                var modal = $(this), form = modal.find('form');
+
+                form.attr('action', action)
+                modal.find('.modal-title').text(title);
+                modal.find('#id-to-delete').html(id);
+            });
+        })
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

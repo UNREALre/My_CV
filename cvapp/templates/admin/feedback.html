@@ -1,0 +1,42 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+    <table class="table" id="data_table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ _('Имя') }}</th>
+                <th>{{ _('E-mail') }}</th>
+                <th>{{ _('Сообщение') }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.email }}</td>
+                    <td class="data-cell">{{ item.message }}</td>
+                    <td>
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#deleteObjectModal"
+                           data-action="{{ url_for('delete_feedback', feedback_id=item.id) }}"
+                           data-title="{{ _('Подтвердите удаление') }}"
+                           data-id={{ item.id }}
+                        ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function firePageEvents() {
+        }
+    </script>
+{% endblock %}

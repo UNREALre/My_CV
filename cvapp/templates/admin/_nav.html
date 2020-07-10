@@ -1,0 +1,41 @@
+<nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="{{ url_for('admin') }}">CV</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if request.endpoint == 'education' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('education') }}">{{ _('Учеба') }} <span class="sr-only">({{ _('текущий') }})</span></a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'jobs' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('jobs') }}">{{ _('Работа') }}</a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'skills' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('skills') }}">{{ _('Скилы') }}</a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'certs' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('certs') }}">{{ _('Сертификаты') }}</a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'portfolio' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('portfolio') }}">{{ _('Портфолио') }}</a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'feedback' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('feedback') }}">{{ _('Сообщения') }}</a>
+            </li>
+            <li class="nav-item {% if request.endpoint == 'settings' %}active{% endif %}">
+                <a class="nav-link" href="{{ url_for('settings') }}">{{ _('Настройки') }}</a>
+            </li>
+        </ul>
+
+        <div>
+            {% if current_user.is_anonumous %}
+                <a href="{{ url_for('login') }}">{{ _('Вход') }}</a>
+            {% else %}
+                <a href="{{ url_for('logout') }}">{{ _('Выход') }}</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>

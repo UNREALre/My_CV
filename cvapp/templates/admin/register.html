@@ -1,0 +1,39 @@
+{% extends "admin/base.html" %}
+
+{% block body %}
+    <h1>Регистрация</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username() }}
+            {% if form.username.errors %}
+                {{ error.list(form.username.errors) }}
+            {% endif %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email() }}
+            {% if form.email.errors %}
+                {{ error.list(form.email.errors) }}
+            {% endif %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password() }}
+            {% if form.password.errors %}
+                {{ error.list(form.password.errors) }}
+            {% endif %}
+        </p>
+        <p>
+            {{ form.password2.label }}<br>
+            {{ form.password2() }}
+            {% if form.password2.errors %}
+                {{ error.list(form.password2.errors) }}
+            {% endif %}
+        </p>
+        <p>
+            {{ form.submit() }}
+        </p>
+    </form>
+{% endblock body %}

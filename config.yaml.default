@@ -1,0 +1,18 @@
+appName: CV
+logLevel: 0 # DEBUG
+
+app:
+    secret: something
+
+db:
+  name: name
+  user: user
+  pass: pass
+  host: localhost
+  port: 1111
+
+mail:
+  host: ''
+  port: ''
+  user: ''
+  pass: ''

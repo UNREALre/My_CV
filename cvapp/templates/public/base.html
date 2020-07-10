@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+	<!-- Basic -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>{{ settings.main_page_title }}</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Load Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300italic,300,100italic,400italic,500,500italic,700,700italic&amp;subset=latin,cyrillic' rel='stylesheet'>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/glitche-basic.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/glitche-layout.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/ionicons.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/magnific-popup.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/animate.css') }}" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/template-dark/dark.css') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='public/css/custom.css', v=times['public/css/custom.css']) }}" />
+
+
+	<!--[if lt IE 9]>
+	<script src="//css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+	<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='public/images/favicons/favicon.ico') }}">
+
+    {{ settings.head_code|safe }}
+</head>
+
+<body class="home">
+
+    {{ settings.body_code|safe }}
+
+    {% import 'macros/form_error.html' as error %}
+
+	<!-- Preloader -->
+	<div class="preloader">
+		<div class="centrize full-width">
+			<div class="vertical-center">
+				<div class="pre-inner">
+					<div class="load typing-load"><p>{{ _('загрузка') }}...</p></div>
+					<span class="typed-load"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Container -->
+	<div class="container">
+
+		<!-- Header -->
+		<header>
+			<div class="head-top">
+                <div class="languages">
+                    <a href="{{ url_for('index', lang='ru') }}" class="{% if lang == 'ru' %}active{% endif %}">ru</a>
+                    <a href="{{ url_for('index', lang='en') }}" class="{% if lang == 'en' %}active{% endif %}">en</a>
+                </div>
+                {% include 'public/_nav.html' %}
+			</div>
+		</header>
+
+		<!-- Wrapper -->
+		<div class="wrapper">
+
+            {% include 'public/_intro.html' %}
+
+            {% include 'public/_about.html' %}
+
+            {% include 'public/_exp_and_edu.html' %}
+
+            {% include 'public/_skills.html' %}
+
+			{% include 'public/_languages.html' %}
+
+            {% include 'public/_certification.html' %}
+
+            {% include 'public/_services.html' %}
+
+            {% include 'public/_portfolio.html' %}
+
+            {% include 'public/_contacts.html' %}
+
+		</div>
+
+		<!-- Footer -->
+		<footer>
+			<div class="soc">
+                {% if settings.socio_gh %}
+                    <a target="_blank" href="{{ settings.socio_gh }}" rel="nofollow"><span class="ion ion-social-github"></span></a>
+                {% endif %}
+                {% if settings.socio_ln %}
+                    <a target="_blank" href="{{ settings.socio_ln }}" rel="nofollow"><span class="ion ion-social-linkedin-outline"></span></a>
+                {% endif %}
+                {% if settings.socio_fb %}
+                    <a target="_blank" href="{{ settings.socio_fb }}" rel="nofollow"><span class="ion ion-social-facebook"></span></a>
+                {% endif %}
+                {% if settings.socio_ig %}
+                    <a target="_blank" href="{{ settings.socio_ig }}" rel="nofollow"><span class="ion ion-social-instagram-outline"></span></a>
+                {% endif %}
+
+			</div>
+			<div class="copy">© {{ now.year }} {{ settings.copyrights|safe }}</div>
+			<div class="clr"></div>
+		</footer>
+
+		<!-- Lines -->
+		<div class="line top"></div>
+		<div class="line bottom"></div>
+		<div class="line left"></div>
+		<div class="line right"></div>
+
+	</div>
+
+	<!-- jQuery Scripts -->
+    <script src="{{ url_for('static', filename='public/js/jquery.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='public/js/jquery.validate.js') }}"></script>
+	<script src="{{ url_for('static', filename='public/js/typed.js') }}"></script>
+	<script src="{{ url_for('static', filename='public/js/magnific-popup.js') }}"></script>
+	<script src="{{ url_for('static', filename='public/js/imagesloaded.pkgd.js') }}"></script>
+	<script src="{{ url_for('static', filename='public/js/isotope.pkgd.js') }}"></script>
+
+	<!-- Main Scripts -->
+	<script src="{{ url_for('static', filename='public/js/glitche-scripts.js') }}"></script>
+
+    <script>
+        $("document").ready(function(){
+            if (window.location.hash === "#form-flash") {
+                var el = document.getElementById("form-flash");
+                el.scrollIntoView();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+			<!-- Contacts Info -->
+			<div class="section contacts" id="section-contacts">
+				<div class="content">
+					<div class="title">
+						<div class="title_inner">{{ _('Контакты') }}</div>
+					</div>
+					<div class="service-items">
+                        {#
+						<div class="service-item">
+							<div class="icon"><span class="ion ion-android-phone-portrait"></span></div>
+							<div class="name">Phone</div>
+							<p>
+								+ (231) 456 67 89
+							</p>
+						</div>
+                         #}
+						<div class="service-item">
+							<div class="icon"><span class="ion ion-email"></span></div>
+							<div class="name">Email</div>
+							<p>
+								<a href="mailto:{{ settings.about_email }}">{{ settings.about_email }}</a>
+							</p>
+						</div>
+						<div class="service-item">
+							<div class="icon"><span class="ion ion-ios-location"></span></div>
+							<div class="name">{{ _('Адрес') }}</div>
+							<p>{{ _('Россия, Саратов') }}</p>
+						</div>
+					</div>
+					<div class="contact_form">
+						<form  method="POST" action="">
+                            {{ form.hidden_tag() }}
+							<div class="group-val">
+								{{ form.name(placeholder=form.name.label.text) }}
+                                {% if form.name.errors %}{{ error.list(form.name.errors) }}{% endif %}
+							</div>
+							<div class="group-val">
+								{{ form.email(placeholder=form.email.label.text) }}
+                                {% if form.email.errors %}{{ error.list(form.email.errors) }}{% endif %}
+							</div>
+							<div class="group-val ct-gr">
+								{{ form.message(placeholder=form.message.label.text) }}
+                                {% if form.message.errors %}{{ error.list(form.message.errors) }}{% endif %}
+							</div>
+                            {{ form.submit(class='btn fill') }}
+						</form>
+
+                        {% set flash_messages = get_flashed_messages() %}
+                        {% if flash_messages %}
+                            <div class="alert-success" id="form-flash">
+                                {% for message in flash_messages %}
+                                    <p>{{ message }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+					</div>
+				</div>
+			</div>

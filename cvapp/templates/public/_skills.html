@@ -1,0 +1,52 @@
+<!-- Skills -->
+<div class="section skills">
+    <div class="content">
+        <div class="title">
+            <div class="title_inner">{{ _('Техничский опыт в годах') }}</div>
+        </div>
+        <div class="skills cols2">
+            <ul>
+                {% for skill in skills %}
+                    {% if skill.type == "hard" %}
+                        <li>
+                            <div class="name">{{ skill.name_en if lang == 'en' and skill.name_en else skill.name }}</div>
+                            <div class="progress">
+                                <div class="percentage" style="width:{{ skill.percentage }}%;">
+                                    <span class="percent {% if skill.description|int < 3 %}extra-padding{% endif %}">{{ skill.description_en if lang == 'en' and skill.description_en else skill.description }}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Skills -->
+<div class="section skills">
+    <div class="content">
+        <div class="title">
+            <div class="title_inner">Soft Skills</div>
+            <div>
+                {{ settings.soft_skills_intro_en|nl2br if lang == 'en' else settings.soft_skills_intro|nl2br }}
+            </div>
+        </div>
+        <div class="skills">
+            <ul>
+                {% for skill in skills %}
+                    {% if skill.type == "soft" %}
+                        <li>
+                            <div class="name">{{ skill.name_en if lang == 'en' and skill.name_en else skill.name }}</div>
+                            <div class="progress">
+                                <div class="percentage" style="width:{{ skill.percentage }}%;">
+                                    <span class="percent {% if skill.description|int < 3 %}extra-padding{% endif %}">{{ skill.description_en if lang == 'en' and skill.description_en else skill.description }}</span>
+                                </div>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>

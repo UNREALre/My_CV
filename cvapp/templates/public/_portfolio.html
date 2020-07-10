@@ -1,0 +1,53 @@
+			<!-- Works -->
+			<div class="section works" id="section-works">
+				<div class="content">
+					<div class="title">
+						<div class="title_inner">{{ _('Мои работы') }}</div>
+                        <div class="jobs-description">
+                            {{ _('В данном разделе я мог бы выставить не один десяток проектов над которыми работал. Но, чтобы соблюсти лаконичность и сэкономить ваше время, здесь будут лишь самые-самые работы, которыми я горжусь.') }}
+                        </div>
+					</div>
+
+
+					<div class="box-items portfolio-items">
+
+                        {% for item in portfolio %}
+                            <div class="box-item f-content">
+                                <div class="image">
+                                    <a href="#popup-{{ item.id }}" class="has-popup-media">
+                                        <img src="{{ config.UPLOAD_WEB_PATH }}/{{ item.image }}" alt="{{ item.name }}" />
+                                        <span class="info">
+                                            <span class="centrize full-width">
+                                                <span class="vertical-center">
+                                                    <span class="ion ion-ios-plus-empty"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="desc">
+                                    <div class="category">{{ item.category_en if lang == 'en' and item.category_en else item.category }}</div>
+                                    <a href="#popup-{{ item.id }}" class="name has-popup-media">{{ item.name_en if lang == 'en' and item.name_en else item_name }}</a>
+                                </div>
+                                <div id="popup-{{ item.id }}" class="popup-box mfp-fade mfp-hide">
+                                    <div class="content">
+                                        <div class="image">
+                                            <img src="{{ config.UPLOAD_WEB_PATH }}/{{ item.image }}" alt="{{ item.name }}">
+                                        </div>
+                                        <div class="desc">
+                                            <div class="category">{{ item.category_en if lang == 'en' and item.category_en else item.category }}</div>
+                                            <h4>{{ item.name_en if lang == 'en' and item.name_en else item.name }}</h4>
+                                            <p>{{ item.description_en|nl2br if lang == 'en' and item.description_en else item.description|nl2br }}</p>
+                                            <a href="{{ item.link }}" class="btn" target="_blank" rel="nofollow" data-text="{{ _('Посмотреть проект') }}">{{ _('Посмотреть проект') }}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
