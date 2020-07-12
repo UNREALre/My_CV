@@ -87,6 +87,7 @@ def settings():
 
 
 @app.route('/edit-settings/<setting_id>', methods=['POST'])
+@login_required
 def edit_settings(setting_id):
     # setting = Settings.query.get(setting_id)
     # if not setting:
@@ -109,6 +110,7 @@ def edit_settings(setting_id):
 
 
 @app.route('/delete-settings/<setting_id>', methods=['POST'])
+@login_required
 def delete_settings(setting_id):
     # One line alternative
     # Settings.query.filter_by(id=setting_id).delete()
@@ -127,6 +129,7 @@ def delete_settings(setting_id):
 
 
 @app.route('/education', methods=['GET', 'POST'])
+@login_required
 def education():
     times = css_js_update_time()
 
@@ -146,6 +149,7 @@ def education():
 
 
 @app.route('/edit-education/<school_id>', methods=['POST'])
+@login_required
 def edit_education(school_id):
     school = Education.query.filter_by(id=school_id).first_or_404()
 
@@ -164,6 +168,7 @@ def edit_education(school_id):
 
 
 @app.route('/delete-education/<school_id>', methods=['POST'])
+@login_required
 def delete_education(school_id):
     school = Education.query.filter_by(id=school_id).first_or_404()
 
@@ -174,6 +179,7 @@ def delete_education(school_id):
 
 
 @app.route('/jobs', methods=['GET', 'POST'])
+@login_required
 def jobs():
     times = css_js_update_time()
 
@@ -191,6 +197,7 @@ def jobs():
 
 
 @app.route('/edit-job/<job_id>', methods=['POST'])
+@login_required
 def edit_job(job_id):
     form = JobForm()
     job = Job.query.filter_by(id=job_id).first_or_404()
@@ -208,6 +215,7 @@ def edit_job(job_id):
 
 
 @app.route('/delete-job/<job_id>', methods=['POST'])
+@login_required
 def delete_job(job_id):
     job = Job.query.filter_by(id=job_id).first_or_404()
     db.session.delete(job)
@@ -217,6 +225,7 @@ def delete_job(job_id):
 
 
 @app.route('/skills', methods=['GET', 'POST'])
+@login_required
 def skills():
     times = css_js_update_time()
     form = SkillForm()
@@ -235,6 +244,7 @@ def skills():
 
 
 @app.route('/edit-skill/<skill_id>', methods=['POST'])
+@login_required
 def edit_skill(skill_id):
     skill = Skills.query.filter_by(id=skill_id).first_or_404()
     form = SkillForm()
@@ -253,6 +263,7 @@ def edit_skill(skill_id):
 
 
 @app.route('/delete-skill/<skill_id>', methods=['POST'])
+@login_required
 def delete_skill(skill_id):
     skill = Skills.query.filter_by(id=skill_id).first_or_404()
     db.session.delete(skill)
@@ -262,6 +273,7 @@ def delete_skill(skill_id):
 
 
 @app.route('/certs', methods=['GET', 'POST'])
+@login_required
 def certs():
     times = css_js_update_time()
     certs = Certification.query.all()
@@ -281,6 +293,7 @@ def certs():
 
 
 @app.route('/edit-cert/<cert_id>', methods=['POST'])
+@login_required
 def edit_cert(cert_id):
     cert = Certification.query.filter_by(id=cert_id).first_or_404()
     form = CertForm()
@@ -299,6 +312,7 @@ def edit_cert(cert_id):
 
 
 @app.route('/delete-cert/<cert_id>', methods=['POST'])
+@login_required
 def delete_cert(cert_id):
     cert = Certification.query.filter_by(id=cert_id).first_or_404()
     if cert.image:
@@ -310,6 +324,7 @@ def delete_cert(cert_id):
 
 
 @app.route('/portfolio', methods=['GET', 'POST'])
+@login_required
 def portfolio():
     times = css_js_update_time()
     form = PortfolioForm()
@@ -332,6 +347,7 @@ def portfolio():
 
 
 @app.route('/edit-portfolio/<portfolio_id>', methods=['POST'])
+@login_required
 def edit_portfolio(portfolio_id):
     portfolio = Portfolio.query.filter_by(id=portfolio_id).first_or_404()
     form = PortfolioForm()
@@ -356,6 +372,7 @@ def edit_portfolio(portfolio_id):
 
 
 @app.route('/delete-portfolio/<portfolio_id>', methods=['POST'])
+@login_required
 def delete_portfolio(portfolio_id):
     portfolio = Portfolio.query.filter_by(id=portfolio_id).first_or_404()
     os.remove(os.path.join(app.config['UPLOAD_FOLDER'], portfolio.image))
@@ -366,6 +383,7 @@ def delete_portfolio(portfolio_id):
 
 
 @app.route('/feedback')
+@login_required
 def feedback():
     times = css_js_update_time()
     emails = Feedback.query.order_by(Feedback.id.asc()).all()
@@ -374,6 +392,7 @@ def feedback():
 
 
 @app.route('/delete-feedback/<feedback_id>', methods=['POST'])
+@login_required
 def delete_feedback(feedback_id):
     feedback = Feedback.query.filter_by(id=feedback_id).first_or_404()
     db.session.delete(feedback)

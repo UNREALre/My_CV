@@ -32,7 +32,7 @@ def index():
         return redirect(url_for('index', _anchor='form-flash'))
 
     lang = session.get('lang') if not request.args.get('lang') else request.args.get('lang')
-
+    lang = 'ru' if not lang else lang
     settings = get_settings()
     schools = Education.query.order_by(Education.start_date.desc()).filter_by(language=lang.upper())
     jobs = Job.query.order_by(Job.start_date.desc()).filter_by(language=lang.upper())
