@@ -34,7 +34,7 @@ def get_locale():
     elif not session.get('lang'):
         session['lang'] = request.accept_languages.best_match(app.config['LANGUAGES'])
 
-    return session.get('lang')
+    return session.get('lang', 'ru')
 
 
 @app.context_processor
@@ -47,6 +47,7 @@ def inject_now():
 @app.context_processor
 def inject_lang():
     lang = session.get('lang') if not request.args.get('lang') else request.args.get('lang')
+    lang = 'ru' if not lang else lang
     return {'lang': lang}
 
 
