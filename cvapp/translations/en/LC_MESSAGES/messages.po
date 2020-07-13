@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-10 15:35+0400\n"
+"POT-Creation-Date: 2020-07-13 09:48+0400\n"
 "PO-Revision-Date: 2020-07-06 11:39+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -169,43 +169,43 @@ msgstr "Close"
 msgid "Да, удалить"
 msgstr "Yes, delete"
 
-#: cvapp/templates/admin/_nav.html:11
+#: cvapp/templates/admin/_nav.html:12
 msgid "Учеба"
 msgstr "Learning"
 
-#: cvapp/templates/admin/_nav.html:11
+#: cvapp/templates/admin/_nav.html:12
 msgid "текущий"
 msgstr "current"
 
-#: cvapp/templates/admin/_nav.html:14
+#: cvapp/templates/admin/_nav.html:15
 msgid "Работа"
 msgstr "Work"
 
-#: cvapp/templates/admin/_nav.html:17
+#: cvapp/templates/admin/_nav.html:18
 msgid "Скилы"
 msgstr "Skills"
 
-#: cvapp/templates/admin/_nav.html:20
+#: cvapp/templates/admin/_nav.html:21
 msgid "Сертификаты"
 msgstr "Certificates"
 
-#: cvapp/templates/admin/_nav.html:23 cvapp/templates/public/_nav.html:6
+#: cvapp/templates/admin/_nav.html:24 cvapp/templates/public/_nav.html:6
 msgid "Портфолио"
 msgstr "Portfolio"
 
-#: cvapp/templates/admin/_nav.html:26
+#: cvapp/templates/admin/_nav.html:27
 msgid "Сообщения"
 msgstr "Messages"
 
-#: cvapp/templates/admin/_nav.html:29
+#: cvapp/templates/admin/_nav.html:30
 msgid "Настройки"
 msgstr "Settings"
 
-#: cvapp/templates/admin/_nav.html:35
+#: cvapp/templates/admin/_nav.html:37
 msgid "Вход"
 msgstr "Sign In"
 
-#: cvapp/templates/admin/_nav.html:37
+#: cvapp/templates/admin/_nav.html:39
 msgid "Выход"
 msgstr "Sign Out"
 
@@ -347,10 +347,6 @@ msgstr "Country"
 msgid "Город"
 msgstr "City"
 
-#: cvapp/templates/public/_about.html:22
-msgid "Скачать резюме"
-msgstr "Download CV"
-
 #: cvapp/templates/public/_certification.html:5
 msgid "Самообразование - чем я горжусь"
 msgstr "Self-education - what I am proud of"
@@ -386,7 +382,7 @@ msgstr "Alex Podrabinovich"
 
 #: cvapp/templates/public/_intro.html:8
 msgid "Web-разработчик с опытом работы 15+ лет"
-msgstr "Web-developer with more than 15+ years of experience"
+msgstr "Web-developer with 15+ years of experience"
 
 #: cvapp/templates/public/_intro.html:9
 msgid "Саратов, Россия"
@@ -503,4 +499,7 @@ msgstr "loading"
 
 #~ msgid ": activate to sort column descending"
 #~ msgstr ""
+
+#~ msgid "Скачать резюме"
+#~ msgstr "Download CV"
 
