@@ -61,8 +61,8 @@
 		<header>
 			<div class="head-top">
                 <div class="languages">
-                    <a href="{{ url_for('index', lang='ru') }}" class="{% if lang == 'ru' %}active{% endif %}">ru</a>
-                    <a href="{{ url_for('index', lang='en') }}" class="{% if lang == 'en' %}active{% endif %}">en</a>
+                    <a href="{{ url_for('public.index', lang='ru') }}" class="{% if lang == 'ru' %}active{% endif %}">ru</a>
+                    <a href="{{ url_for('public.index', lang='en') }}" class="{% if lang == 'en' %}active{% endif %}">en</a>
                 </div>
                 {% include 'public/_nav.html' %}
 			</div>

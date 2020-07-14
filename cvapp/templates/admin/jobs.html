@@ -6,7 +6,7 @@
            data-toggle="modal"
            data-target="#objectModal"
            data-title="{{ _('Новый параметр') }}"
-           data-action="{{ url_for('jobs') }}"
+           data-action="{{ url_for('admin.jobs') }}"
         >{{ _('Добавить') }}</a>
     </div>
 
@@ -33,7 +33,7 @@
                         <a href="#"
                            data-toggle="modal"
                            data-target="#objectModal"
-                           data-action="{{ url_for('edit_job', job_id=item.id) }}"
+                           data-action="{{ url_for('admin.edit_job', job_id=item.id) }}"
                            data-title="{{ _('Редактирование') }}"
                            data-name="{{ item.name }}"
                            data-description="{{ item.description }}"
@@ -45,7 +45,7 @@
                         <a href="#"
                            data-toggle="modal"
                            data-target="#deleteObjectModal"
-                           data-action="{{ url_for('delete_job', job_id=item.id) }}"
+                           data-action="{{ url_for('admin.delete_job', job_id=item.id) }}"
                            data-title="{{ _('Подтвердите удаление') }}"
                            data-id={{ item.id }}
                         ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>

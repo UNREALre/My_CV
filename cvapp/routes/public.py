@@ -1,4 +1,4 @@
-from flask import render_template, request, session, flash, redirect, url_for
+from flask import render_template, request, session, flash, redirect, url_for, Blueprint
 from flask_babel import lazy_gettext as _l
 from flask_login import current_user
 from cvapp import app, db
@@ -7,9 +7,11 @@ from cvapp.models import Education, Job, Skills, Certification, Portfolio, Feedb
 from cvapp.forms import FeedbackForm
 from cvapp.email import send_email
 
+blueprint = Blueprint('public', __name__)
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
+
+@blueprint.route('/', methods=['GET', 'POST'])
+@blueprint.route('/index', methods=['GET', 'POST'])
 def index():
     times = css_js_update_time(for_public=True)
 
@@ -48,5 +50,14 @@ def index():
                            jobs=jobs,
                            schools=schools,
                            settings=settings,
+                           times=times
+                           )
+
+
+@blueprint.route('/blog')
+def blog():
+    times = css_js_update_time()
+
+    return render_template('public/blog.html',
                            times=times
                            )

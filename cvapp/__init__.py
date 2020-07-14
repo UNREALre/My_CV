@@ -19,7 +19,7 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'admin.login'
 login.login_message = _l('Пожалуйста, авторизуйтесь, чтобы получить доступ к этой странице')
 
 babel = Babel(app)
@@ -79,4 +79,8 @@ if not app.debug:
         app.logger.addHandler(mail_handler)
 
 
-from cvapp.routes import public, admin, errors
+from cvapp.routes import errors
+from cvapp.routes.public import blueprint as blueprint_public
+from cvapp.routes.admin import blueprint as blueprint_admin
+app.register_blueprint(blueprint_public, url_prefix='/')
+app.register_blueprint(blueprint_admin, url_prefix='/admin')

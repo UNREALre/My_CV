@@ -1,5 +1,5 @@
 import os
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, Blueprint
 from flask_login import current_user, login_required, logout_user, login_user
 from cvapp import app, db
 from cvapp.models import User, Settings, Education, Job, Skills, Certification, Portfolio, Feedback
@@ -8,50 +8,52 @@ from cvapp.forms import (LoginForm, RegistrationForm, SettingsForm, EducationFor
 from cvapp.helpers import css_js_update_time, save_uploaded_file
 from config import project_root
 
+blueprint = Blueprint('admin', __name__)
 
-@app.route('/admin')
+
+@blueprint.route('/')
 @login_required
 def admin():
     static_times = css_js_update_time()
     return render_template('admin/index.html', times=static_times)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     static_times = css_js_update_time()
 
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('admin.index'))
 
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Неверный логин/пароль')
-            return redirect(url_for('login'))
+            return redirect(url_for('admin.login'))
 
         login_user(user, remember=form.remember_me.data)
         # check if user comes from any protected non-anonymous page to return him where he wanted to be before login
-        next_page = request.args.get('next') or url_for('index')
+        next_page = request.args.get('next') or url_for('admin.index')
         return redirect(next_page)
 
     return render_template('admin/login.html', title='Авторизация', form=form, times=static_times)
 
 
-@app.route('/logout')
+@blueprint.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('public.index'))
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     """Just for testing purposes. No need to have this view-function for this project."""
 
     static_times = css_js_update_time()
 
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('admin.index'))
 
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -61,12 +63,12 @@ def register():
         db.session.commit()
 
         flash('Поздравляем, Вы успешно зарегистрировались!')
-        return redirect(url_for('login'))
+        return redirect(url_for('admin.login'))
 
     return render_template('admin/register.html', title='Регистрация', form=form, times=static_times)
 
 
-@app.route('/settings', methods=['GET', 'POST'])
+@blueprint.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
     static_times = css_js_update_time()
@@ -81,12 +83,12 @@ def settings():
         setting_item = Settings(param_name=form.param_name.data, param_value=form.param_value.data)
         db.session.add(setting_item)
         db.session.commit()
-        return redirect(url_for('settings'))
+        return redirect(url_for('admin.settings'))
 
     return render_template('admin/settings.html', form=form, settings=settings, times=static_times)
 
 
-@app.route('/edit-settings/<setting_id>', methods=['POST'])
+@blueprint.route('/edit-settings/<setting_id>', methods=['POST'])
 @login_required
 def edit_settings(setting_id):
     # setting = Settings.query.get(setting_id)
@@ -106,10 +108,10 @@ def edit_settings(setting_id):
         db.session.add(setting)
         db.session.commit()
 
-    return redirect(url_for('settings'))
+    return redirect(url_for('admin.settings'))
 
 
-@app.route('/delete-settings/<setting_id>', methods=['POST'])
+@blueprint.route('/delete-settings/<setting_id>', methods=['POST'])
 @login_required
 def delete_settings(setting_id):
     # One line alternative
@@ -125,10 +127,10 @@ def delete_settings(setting_id):
     db.session.delete(setting)
     db.session.commit()
 
-    return redirect(url_for('settings'))
+    return redirect(url_for('admin.settings'))
 
 
-@app.route('/education', methods=['GET', 'POST'])
+@blueprint.route('/education', methods=['GET', 'POST'])
 @login_required
 def education():
     times = css_js_update_time()
@@ -143,12 +145,12 @@ def education():
         db.session.add(school)
         db.session.commit()
 
-        return redirect(url_for('education'))
+        return redirect(url_for('admin.education'))
 
     return render_template('admin/education.html', form=form, list=schools, times=times)
 
 
-@app.route('/edit-education/<school_id>', methods=['POST'])
+@blueprint.route('/edit-education/<school_id>', methods=['POST'])
 @login_required
 def edit_education(school_id):
     school = Education.query.filter_by(id=school_id).first_or_404()
@@ -164,10 +166,10 @@ def edit_education(school_id):
         db.session.add(school)
         db.session.commit()
 
-        return redirect(url_for('education'))
+        return redirect(url_for('admin.education'))
 
 
-@app.route('/delete-education/<school_id>', methods=['POST'])
+@blueprint.route('/delete-education/<school_id>', methods=['POST'])
 @login_required
 def delete_education(school_id):
     school = Education.query.filter_by(id=school_id).first_or_404()
@@ -175,10 +177,10 @@ def delete_education(school_id):
     db.session.delete(school)
     db.session.commit()
 
-    return redirect(url_for('education'))
+    return redirect(url_for('admin.education'))
 
 
-@app.route('/jobs', methods=['GET', 'POST'])
+@blueprint.route('/jobs', methods=['GET', 'POST'])
 @login_required
 def jobs():
     times = css_js_update_time()
@@ -191,12 +193,12 @@ def jobs():
                   start_date=form.start_date.data, end_date=form.end_date.data, language=form.language.data)
         db.session.add(job)
         db.session.commit()
-        return redirect(url_for('jobs'))
+        return redirect(url_for('admin.jobs'))
 
     return render_template('admin/jobs.html', list=jobs, form=form, times=times)
 
 
-@app.route('/edit-job/<job_id>', methods=['POST'])
+@blueprint.route('/edit-job/<job_id>', methods=['POST'])
 @login_required
 def edit_job(job_id):
     form = JobForm()
@@ -211,20 +213,20 @@ def edit_job(job_id):
         db.session.add(job)
         db.session.commit()
 
-    return redirect(url_for('jobs'))
+    return redirect(url_for('admin.jobs'))
 
 
-@app.route('/delete-job/<job_id>', methods=['POST'])
+@blueprint.route('/delete-job/<job_id>', methods=['POST'])
 @login_required
 def delete_job(job_id):
     job = Job.query.filter_by(id=job_id).first_or_404()
     db.session.delete(job)
     db.session.commit()
 
-    return redirect(url_for('jobs'))
+    return redirect(url_for('admin.jobs'))
 
 
-@app.route('/skills', methods=['GET', 'POST'])
+@blueprint.route('/skills', methods=['GET', 'POST'])
 @login_required
 def skills():
     times = css_js_update_time()
@@ -238,12 +240,12 @@ def skills():
         db.session.add(skill)
         db.session.commit()
 
-        return redirect(url_for('skills'))
+        return redirect(url_for('admin.skills'))
 
     return render_template('admin/skills.html', list=skills, form=form, times=times)
 
 
-@app.route('/edit-skill/<skill_id>', methods=['POST'])
+@blueprint.route('/edit-skill/<skill_id>', methods=['POST'])
 @login_required
 def edit_skill(skill_id):
     skill = Skills.query.filter_by(id=skill_id).first_or_404()
@@ -259,20 +261,20 @@ def edit_skill(skill_id):
         db.session.add(skill)
         db.session.commit()
 
-    return redirect(url_for('skills'))
+    return redirect(url_for('admin.skills'))
 
 
-@app.route('/delete-skill/<skill_id>', methods=['POST'])
+@blueprint.route('/delete-skill/<skill_id>', methods=['POST'])
 @login_required
 def delete_skill(skill_id):
     skill = Skills.query.filter_by(id=skill_id).first_or_404()
     db.session.delete(skill)
     db.session.commit()
 
-    return redirect(url_for('skills'))
+    return redirect(url_for('admin.skills'))
 
 
-@app.route('/certs', methods=['GET', 'POST'])
+@blueprint.route('/certs', methods=['GET', 'POST'])
 @login_required
 def certs():
     times = css_js_update_time()
@@ -287,12 +289,12 @@ def certs():
         db.session.add(cert)
         db.session.commit()
 
-        return redirect(url_for('certs'))
+        return redirect(url_for('admin.certs'))
 
     return render_template('admin/certs.html', list=certs, form=form, times=times)
 
 
-@app.route('/edit-cert/<cert_id>', methods=['POST'])
+@blueprint.route('/edit-cert/<cert_id>', methods=['POST'])
 @login_required
 def edit_cert(cert_id):
     cert = Certification.query.filter_by(id=cert_id).first_or_404()
@@ -308,10 +310,10 @@ def edit_cert(cert_id):
         db.session.add(cert)
         db.session.commit()
 
-    return redirect(url_for('certs'))
+    return redirect(url_for('admin.certs'))
 
 
-@app.route('/delete-cert/<cert_id>', methods=['POST'])
+@blueprint.route('/delete-cert/<cert_id>', methods=['POST'])
 @login_required
 def delete_cert(cert_id):
     cert = Certification.query.filter_by(id=cert_id).first_or_404()
@@ -320,10 +322,10 @@ def delete_cert(cert_id):
     db.session.delete(cert)
     db.session.commit()
 
-    return redirect(url_for('certs'))
+    return redirect(url_for('admin.certs'))
 
 
-@app.route('/portfolio', methods=['GET', 'POST'])
+@blueprint.route('/portfolio', methods=['GET', 'POST'])
 @login_required
 def portfolio():
     times = css_js_update_time()
@@ -341,12 +343,12 @@ def portfolio():
         db.session.add(portfolio)
         db.session.commit()
 
-        return redirect(url_for('portfolio'))
+        return redirect(url_for('admin.portfolio'))
 
     return render_template('admin/portfolio.html', list=portfolio_list, form=form, times=times)
 
 
-@app.route('/edit-portfolio/<portfolio_id>', methods=['POST'])
+@blueprint.route('/edit-portfolio/<portfolio_id>', methods=['POST'])
 @login_required
 def edit_portfolio(portfolio_id):
     portfolio = Portfolio.query.filter_by(id=portfolio_id).first_or_404()
@@ -368,10 +370,10 @@ def edit_portfolio(portfolio_id):
         db.session.add(portfolio)
         db.session.commit()
 
-    return redirect(url_for('portfolio'))
+    return redirect(url_for('admin.portfolio'))
 
 
-@app.route('/delete-portfolio/<portfolio_id>', methods=['POST'])
+@blueprint.route('/delete-portfolio/<portfolio_id>', methods=['POST'])
 @login_required
 def delete_portfolio(portfolio_id):
     portfolio = Portfolio.query.filter_by(id=portfolio_id).first_or_404()
@@ -379,10 +381,10 @@ def delete_portfolio(portfolio_id):
     db.session.delete(portfolio)
     db.session.commit()
 
-    return redirect(url_for('portfolio'))
+    return redirect(url_for('admin.portfolio'))
 
 
-@app.route('/feedback')
+@blueprint.route('/feedback')
 @login_required
 def feedback():
     times = css_js_update_time()
@@ -391,10 +393,18 @@ def feedback():
     return render_template('admin/feedback.html', list=emails, times=times)
 
 
-@app.route('/delete-feedback/<feedback_id>', methods=['POST'])
+@blueprint.route('/delete-feedback/<feedback_id>', methods=['POST'])
 @login_required
 def delete_feedback(feedback_id):
     feedback = Feedback.query.filter_by(id=feedback_id).first_or_404()
     db.session.delete(feedback)
     db.session.commit()
-    return redirect(url_for('feedback'))
+    return redirect(url_for('admin.feedback'))
+
+
+@blueprint.route('/blog', methods=['GET', 'POST'])
+@login_required
+def blog():
+    times = css_js_update_time()
+
+    return render_template('/admin/blog.html', times=times)
