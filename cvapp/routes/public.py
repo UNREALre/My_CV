@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import render_template, request, session, flash, redirect, url_for, Blueprint
 from flask_babel import lazy_gettext as _l
 from flask_login import current_user
