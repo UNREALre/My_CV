@@ -1,0 +1,127 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+    <div class="actions-wrapper">
+        <a href="#" class="btn btn-primary"
+           data-toggle="modal"
+           data-target="#objectModal"
+           data-title="{{ _('Новый пост') }}"
+           data-action="{{ url_for('admin.posts') }}"
+        >{{ _('Добавить') }}</a>
+    </div>
+
+    <table class="table" id="data_table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{{ _('Заглавие') }}</th>
+                <th>{{ _('Ссылка') }}</th>
+                <th>{{ _('Категории') }}</th>
+                <th>{{ _('Дата') }}</th>
+                <th>&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in list %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.name }}</td>
+                    <td><a href="//podrabinovich.ru/blog/{{ item.slug }}" target="_blank">{{ item.slug }}</a></td>
+                    <td>
+                        <ul>
+                        {% for category in item.categories %}
+                            <li>{{ category.name }}</li>
+                        {% endfor %}
+                        </ul>
+                    </td>
+                    <td>{{ item.date.day }}.{{ item.date.month }}.{{ item.date.year }}</td>
+                    <td>
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#objectModal"
+                           data-action="{{ url_for('admin.edit_post', post_id=item.id) }}"
+                           data-title="{{ _('Редактирование') }}"
+                           data-name="{{ item.name }}"
+                           data-slug="{{ item.slug }}"
+                           data-description="{{ item.description }}"
+                           data-keywords="{{ item.keywords }}"
+                           data-text="{{ item.text }}"
+                           data-categories="{% for cat in item.categories %}{{ cat.id }},{% endfor %}"
+                        ><img src="{{ url_for('static', filename='admin/icons/pencil-square.svg') }}" alt="" width="16" height="16" title="{{ _('Редактировать') }}"></a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#deleteObjectModal"
+                           data-action="{{ url_for('admin.delete_post', post_id=item.id) }}"
+                           data-title="{{ _('Подтвердите удаление') }}"
+                           data-id={{ item.id }}
+                        ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Modal -->
+    <div class="modal fade" id="objectModal" tabindex="-1" role="dialog" aria-labelledby="objectModalLabel"
+         aria-hidden="true">
+        <form method="POST" action="" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="objectModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            {{ form.categories.label }} {% if form.categories.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.categories(class='form-control') }}
+                            {% if form.categories.errors %}{{ error.list(form.categories.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.name.label }} {% if form.name.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.name(class='form-control') }}
+                            {% if form.name.errors %}{{ error.list(form.name.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.slug.label }} {% if form.slug.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.slug(class='form-control') }}
+                            {% if form.slug.errors %}{{ error.list(form.slug.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.description.label }} {% if form.description.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.description(class='form-control') }}
+                            {% if form.description.errors %}{{ error.list(form.description.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.keywords.label }} {% if form.keywords.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.keywords(class='form-control') }}
+                            {% if form.keywords.errors %}{{ error.list(form.keywords.errors) }}{% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.text.label }} {% if form.text.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.text(class='form-control') }}
+                            {% if form.text.errors %}{{ error.list(form.text.errors) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Закрыть') }}</button>
+                        {{ form.submit(class='btn btn-primary') }}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function firePageEvents() {
+            //
+        }
+    </script>
+{% endblock %}

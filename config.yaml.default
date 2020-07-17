@@ -16,3 +16,6 @@ mail:
   port: ''
   user: ''
   pass: ''
+
+blog:
+  per_page: 10

@@ -3,7 +3,7 @@ from flask_babel import lazy_gettext as _l
 from flask_login import current_user
 from cvapp import app, db
 from cvapp.helpers import get_settings, css_js_update_time
-from cvapp.models import Education, Job, Skills, Certification, Portfolio, Feedback
+from cvapp.models import Education, Job, Skills, Certification, Portfolio, Feedback, Post, Category
 from cvapp.forms import FeedbackForm
 from cvapp.email import send_email
 
@@ -13,7 +13,7 @@ blueprint = Blueprint('public', __name__)
 @blueprint.route('/', methods=['GET', 'POST'])
 @blueprint.route('/index', methods=['GET', 'POST'])
 def index():
-    times = css_js_update_time(for_public=True)
+    times = css_js_update_time(True)
 
     form = FeedbackForm()
 
@@ -42,7 +42,7 @@ def index():
     certs = Certification.query.order_by(Certification.id.asc()).all()
     portfolio = Portfolio.query.order_by(Portfolio.order.asc()).all()
 
-    return render_template('public/base.html',
+    return render_template('public/index.html',
                            form=form,
                            portfolio=portfolio,
                            certs=certs,
@@ -56,8 +56,44 @@ def index():
 
 @blueprint.route('/blog')
 def blog():
-    times = css_js_update_time()
+    times = css_js_update_time(True)
+    settings = get_settings()
+
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    prev_url = url_for('public.blog', page=posts.prev_num) if posts.has_prev else None
+    next_url = url_for('public.blog', page=posts.next_num) if posts.has_next else None
 
     return render_template('public/blog.html',
+                           posts=posts.items,
+                           next_url=next_url,
+                           prev_url=prev_url,
+                           settings=settings,
                            times=times
                            )
+
+
+@blueprint.route('/blog/<slug>')
+def post(slug):
+    times = css_js_update_time(True)
+    settings = get_settings()
+    post = Post.query.filter_by(slug=slug).first_or_404()
+    return render_template('public/post.html',
+                           post=post,
+                           settings=settings,
+                           times=times
+                           )
+
+
+@blueprint.route('/blog/category/<slug>')
+def category(slug):
+    times = css_js_update_time(True)
+    settings = get_settings()
+    category = Category.query.filter_by(slug=slug).first_or_404()
+
+    return render_template('public/category.html',
+                           posts=category.posts,
+                           category=category,
+                           settings=settings,
+                           times=times)

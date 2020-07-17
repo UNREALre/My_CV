@@ -56,7 +56,7 @@ def inject_lang():
 def nl2br(eval_ctx, value):
     """Converts newlines in text to HTML-tags"""
 
-    value = re.sub(r'\r\n|\r|\n', '\n', value) # normalize newlines
+    value = re.sub(r'\r\n|\r|\n', '\n', value)  # normalize newlines
     paras = re.split('\n{2,}', value)
     paras = [u'<p>%s</p>' % p.replace('\n', '<br />') for p in paras]
     paras = u'\n\n'.join(paras)

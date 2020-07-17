@@ -1,0 +1,41 @@
+{% extends 'public/base.html' %}
+
+{% block body %}
+			<!-- Started -->
+			<div class="section started">
+				<div class="centrize full-width">
+					<div class="vertical-center">
+						<div class="started-content">
+							<div class="date">{{ '%02d'|format(post.date.day) }}.{{ '%02d'|format(post.date.month) }}.{{ post.date.year }}</div>
+							<div class="h-title blog_title">{{ post.name }}</div>
+							<div class="h-subtitle typing-bread">
+								<p><a href="{{ url_for('public.index') }}">{{ _('Главная') }}</a> / <a href="{{ url_for('public.blog') }}">{{ _('Блог') }}</a></p>
+							</div>
+							<span class="typed-bread"></span>
+						</div>
+					</div>
+				</div>
+				<a href="#" class="mouse_btn"><span class="ion ion-mouse"></span></a>
+			</div>
+
+			<!-- Blog -->
+			<div class="section blog">
+				<div class="content">
+					<div class="single-post-text">
+						{{ post.text|safe }}
+
+                        <ul class="categories">
+                            {% for category in post.categories %}
+                                <li><a href="/blog/category/{{ category.slug }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+{% endblock body %}
+
+{% block javascript %}
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock javascript %}

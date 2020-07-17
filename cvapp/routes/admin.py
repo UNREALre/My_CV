@@ -2,9 +2,10 @@ import os
 from flask import render_template, request, redirect, url_for, flash, Blueprint
 from flask_login import current_user, login_required, logout_user, login_user
 from cvapp import app, db
-from cvapp.models import User, Settings, Education, Job, Skills, Certification, Portfolio, Feedback
+from cvapp.models import (User, Settings, Education, Job, Skills, Certification, Portfolio, Feedback,
+                          Post, Category)
 from cvapp.forms import (LoginForm, RegistrationForm, SettingsForm, EducationForm,
-                         JobForm, SkillForm, CertForm, PortfolioForm)
+                         JobForm, SkillForm, CertForm, PortfolioForm, BlogPostForm, BlogCategoryForm)
 from cvapp.helpers import css_js_update_time, save_uploaded_file
 from config import project_root
 
@@ -353,7 +354,7 @@ def portfolio():
 def edit_portfolio(portfolio_id):
     portfolio = Portfolio.query.filter_by(id=portfolio_id).first_or_404()
     form = PortfolioForm()
-    if portfolio:
+    if form.validate_on_submit():
         if form.image_file.data:
             if portfolio.image:
                 os.remove(os.path.join(app.config['UPLOAD_FOLDER'], portfolio.image))
@@ -402,9 +403,86 @@ def delete_feedback(feedback_id):
     return redirect(url_for('admin.feedback'))
 
 
-@blueprint.route('/blog', methods=['GET', 'POST'])
+@blueprint.route('/posts', methods=['GET', 'POST'])
 @login_required
-def blog():
+def posts():
     times = css_js_update_time()
+    posts = Post.query.order_by(Post.date.desc()).all()
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        post = Post(name=form.name.data, slug=form.slug.data,
+                    description=form.description.data, keywords=form.keywords.data,
+                    text=form.text.data, categories=form.categories.data)
+        db.session.add(post)
+        db.session.commit()
 
-    return render_template('/admin/blog.html', times=times)
+        return redirect(url_for('admin.posts'))
+
+    return render_template('admin/posts.html', list=posts, form=form, times=times)
+
+
+@blueprint.route('/edit-post/<post_id>', methods=['POST'])
+@login_required
+def edit_post(post_id):
+    form = BlogPostForm()
+    if form.validate_on_submit():
+        post = Post.query.filter_by(id=post_id).first_or_404()
+        post.name = form.name.data
+        post.slug = form.slug.data
+        post.description = form.description.data
+        post.keywords = form.keywords.data
+        post.text = form.text.data
+        post.categories = form.categories.data
+        db.session.add(post)
+        db.session.commit()
+
+    return redirect(url_for('admin.posts'))
+
+
+@blueprint.route('/delete-post/<post_id>', methods=['POST'])
+def delete_post(post_id):
+    post = Post.query.filter_by(id=post_id).first_or_404()
+    db.session.delete(post)
+    db.session.commit()
+
+    return redirect(url_for('admin.posts'))
+
+
+@blueprint.route('/categories', methods=['GET', 'POST'])
+@login_required
+def categories():
+    times = css_js_update_time()
+    form = BlogCategoryForm()
+    categories = Category.query.order_by(Category.name.asc()).all()
+    if form.validate_on_submit():
+        category = Category(name=form.name.data, slug=form.slug.data)
+        db.session.add(category)
+        db.session.commit()
+
+        return redirect(url_for('admin.categories'))
+
+    return render_template('admin/categories.html', list=categories, form=form, times=times)
+
+
+@blueprint.route('/edit-category/<category_id>', methods=['POST'])
+@login_required
+def edit_category(category_id):
+    form = BlogCategoryForm()
+    if form.validate_on_submit():
+        category = Category.query.filter_by(id=category_id).first_or_404()
+        category.name = form.name.data
+        category.slug = form.slug.data
+        db.session.add(category)
+        db.session.commit()
+
+    return redirect(url_for('admin.categories'))
+
+
+@blueprint.route('/delete-category/<category_id>', methods=['POST'])
+@login_required
+def delete_category(category_id):
+    category = Category.query.filter_by(id=category_id).first_or_404()
+    db.session.delete(category)
+    db.session.commit()
+
+    return redirect(url_for('admin.categories'))

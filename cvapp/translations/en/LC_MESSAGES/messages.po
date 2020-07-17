@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-07-13 09:48+0400\n"
+"POT-Creation-Date: 2020-07-17 16:48+0400\n"
 "PO-Revision-Date: 2020-07-06 11:39+0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -22,113 +22,140 @@ msgstr ""
 msgid "Пожалуйста, авторизуйтесь, чтобы получить доступ к этой странице"
 msgstr "Please, authorize yourself to get access to this web page"
 
-#: cvapp/forms/forms.py:43 cvapp/templates/admin/settings.html:17
+#: cvapp/forms/forms.py:45 cvapp/templates/admin/settings.html:17
 msgid "Наименование параметра"
 msgstr "Param name"
 
-#: cvapp/forms/forms.py:44 cvapp/templates/admin/settings.html:18
+#: cvapp/forms/forms.py:46 cvapp/templates/admin/settings.html:18
 msgid "Значение параметра"
 msgstr "Param value"
 
-#: cvapp/forms/forms.py:45
+#: cvapp/forms/forms.py:47
 msgid "Загрузить файл"
 msgstr "Upload file"
 
-#: cvapp/forms/forms.py:46 cvapp/forms/forms.py:55 cvapp/forms/forms.py:64
-#: cvapp/forms/forms.py:74 cvapp/forms/forms.py:81 cvapp/forms/forms.py:94
+#: cvapp/forms/forms.py:48 cvapp/forms/forms.py:57 cvapp/forms/forms.py:66
+#: cvapp/forms/forms.py:76 cvapp/forms/forms.py:83 cvapp/forms/forms.py:96
+#: cvapp/forms/forms.py:115 cvapp/forms/forms.py:121
 msgid "Сохранить"
 msgstr "Save"
 
-#: cvapp/forms/forms.py:50 cvapp/forms/forms.py:59 cvapp/forms/forms.py:68
-#: cvapp/forms/forms.py:78 cvapp/forms/forms.py:88
-#: cvapp/templates/admin/certs.html:17 cvapp/templates/admin/education.html:17
-#: cvapp/templates/admin/jobs.html:17 cvapp/templates/admin/portfolio.html:19
-#: cvapp/templates/admin/skills.html:17
+#: cvapp/forms/forms.py:52 cvapp/forms/forms.py:61 cvapp/forms/forms.py:70
+#: cvapp/forms/forms.py:80 cvapp/forms/forms.py:90 cvapp/forms/forms.py:119
+#: cvapp/templates/admin/categories.html:17 cvapp/templates/admin/certs.html:17
+#: cvapp/templates/admin/education.html:17 cvapp/templates/admin/jobs.html:17
+#: cvapp/templates/admin/portfolio.html:19 cvapp/templates/admin/skills.html:17
 msgid "Наименование"
 msgstr "Name"
 
-#: cvapp/forms/forms.py:51 cvapp/forms/forms.py:60 cvapp/forms/forms.py:70
-#: cvapp/forms/forms.py:90 cvapp/templates/admin/education.html:20
+#: cvapp/forms/forms.py:53 cvapp/forms/forms.py:62 cvapp/forms/forms.py:72
+#: cvapp/forms/forms.py:92 cvapp/templates/admin/education.html:20
 #: cvapp/templates/admin/jobs.html:20 cvapp/templates/admin/skills.html:18
 msgid "Описание"
 msgstr "Description"
 
-#: cvapp/forms/forms.py:52 cvapp/forms/forms.py:61
+#: cvapp/forms/forms.py:54 cvapp/forms/forms.py:63
 #: cvapp/templates/admin/education.html:18 cvapp/templates/admin/jobs.html:18
 msgid "Дата начала"
 msgstr "Start date"
 
-#: cvapp/forms/forms.py:53 cvapp/forms/forms.py:62
+#: cvapp/forms/forms.py:55 cvapp/forms/forms.py:64
 #: cvapp/templates/admin/education.html:19 cvapp/templates/admin/jobs.html:19
 msgid "Дата окончания"
 msgstr "End date"
 
-#: cvapp/forms/forms.py:54 cvapp/forms/forms.py:63
+#: cvapp/forms/forms.py:56 cvapp/forms/forms.py:65
 msgid "Язык"
 msgstr "Language"
 
-#: cvapp/forms/forms.py:69 cvapp/forms/forms.py:89
+#: cvapp/forms/forms.py:71 cvapp/forms/forms.py:91
 msgid "Наименование на английском"
 msgstr "English name"
 
-#: cvapp/forms/forms.py:71 cvapp/forms/forms.py:91
+#: cvapp/forms/forms.py:73 cvapp/forms/forms.py:93
 msgid "Описание на английском"
 msgstr "English description"
 
-#: cvapp/forms/forms.py:72 cvapp/templates/admin/skills.html:19
+#: cvapp/forms/forms.py:74 cvapp/templates/admin/skills.html:19
 msgid "Проценты"
 msgstr "Percents"
 
-#: cvapp/forms/forms.py:73 cvapp/templates/admin/skills.html:20
+#: cvapp/forms/forms.py:75 cvapp/templates/admin/skills.html:20
 msgid "Тип"
 msgstr "Type"
 
-#: cvapp/forms/forms.py:79 cvapp/templates/admin/certs.html:18
-#: cvapp/templates/admin/portfolio.html:20
+#: cvapp/forms/forms.py:81 cvapp/templates/admin/certs.html:18
+#: cvapp/templates/admin/portfolio.html:20 cvapp/templates/admin/posts.html:18
 msgid "Ссылка"
 msgstr "Link"
 
-#: cvapp/forms/forms.py:80
+#: cvapp/forms/forms.py:82
 msgid "Файл"
 msgstr "File"
 
-#: cvapp/forms/forms.py:85
+#: cvapp/forms/forms.py:87
 msgid "Порядок вывода"
 msgstr "Order"
 
-#: cvapp/forms/forms.py:86 cvapp/templates/admin/portfolio.html:18
+#: cvapp/forms/forms.py:88 cvapp/templates/admin/portfolio.html:18
 msgid "Категория"
 msgstr "Category"
 
-#: cvapp/forms/forms.py:87
+#: cvapp/forms/forms.py:89
 msgid "Категория на английском"
 msgstr "English category"
 
-#: cvapp/forms/forms.py:92
+#: cvapp/forms/forms.py:94
 msgid "Ссылка на проект"
 msgstr "Project link"
 
-#: cvapp/forms/forms.py:93 cvapp/templates/admin/certs.html:19
+#: cvapp/forms/forms.py:95 cvapp/templates/admin/certs.html:19
 #: cvapp/templates/admin/portfolio.html:21
 msgid "Изображение"
 msgstr "Picture"
 
-#: cvapp/forms/forms.py:98 cvapp/templates/admin/feedback.html:8
+#: cvapp/forms/forms.py:100 cvapp/templates/admin/feedback.html:8
 #: cvapp/templates/public/_about.html:14
 msgid "Имя"
 msgstr "Name"
 
-#: cvapp/forms/forms.py:99 cvapp/templates/admin/feedback.html:9
+#: cvapp/forms/forms.py:101 cvapp/templates/admin/feedback.html:9
 msgid "E-mail"
 msgstr ""
 
-#: cvapp/forms/forms.py:100 cvapp/templates/admin/feedback.html:10
+#: cvapp/forms/forms.py:102 cvapp/templates/admin/feedback.html:10
 msgid "Сообщение"
 msgstr "Message"
 
-#: cvapp/forms/forms.py:101
+#: cvapp/forms/forms.py:103
 msgid "Отправить сообщение"
 msgstr "Send message"
+
+#: cvapp/forms/forms.py:107 cvapp/templates/admin/posts.html:17
+msgid "Заглавие"
+msgstr "Header"
+
+#: cvapp/forms/forms.py:108 cvapp/forms/forms.py:120
+#: cvapp/templates/admin/categories.html:18
+msgid "Slug"
+msgstr ""
+
+#: cvapp/forms/forms.py:109
+msgid "Description"
+msgstr ""
+
+#: cvapp/forms/forms.py:110
+msgid "Keywords"
+msgstr ""
+
+#: cvapp/forms/forms.py:111
+msgid "Текст"
+msgstr "Text"
+
+#: cvapp/forms/forms.py:112 cvapp/templates/admin/_nav.html:30
+#: cvapp/templates/admin/posts.html:19
+msgid "Категории"
+msgstr "Categories"
 
 #: cvapp/routes/errors.py:8
 msgid "Извините, страница не найдена."
@@ -138,11 +165,11 @@ msgstr "Sorry, page can not be found."
 msgid "Извините, что-то пошло не так"
 msgstr "Sorry, something went wrong"
 
-#: cvapp/routes/public.py:22
+#: cvapp/routes/public.py:24
 msgid "Сообщение с сайта Podrabinovich.RU"
 msgstr "Message from Podrabinovich.RU web-site"
 
-#: cvapp/routes/public.py:30
+#: cvapp/routes/public.py:32
 msgid "Сообщение было успешно отослано!"
 msgstr "The message was successfully sent!"
 
@@ -158,10 +185,12 @@ msgstr "Home"
 msgid "Вы действительно хотите удалить объект"
 msgstr "Do you really want to remove the object"
 
-#: cvapp/templates/admin/_modals.html:18 cvapp/templates/admin/certs.html:84
+#: cvapp/templates/admin/_modals.html:18
+#: cvapp/templates/admin/categories.html:77 cvapp/templates/admin/certs.html:84
 #: cvapp/templates/admin/education.html:98 cvapp/templates/admin/jobs.html:98
 #: cvapp/templates/admin/portfolio.html:124
-#: cvapp/templates/admin/settings.html:82 cvapp/templates/admin/skills.html:105
+#: cvapp/templates/admin/posts.html:111 cvapp/templates/admin/settings.html:82
+#: cvapp/templates/admin/skills.html:105
 msgid "Закрыть"
 msgstr "Close"
 
@@ -197,15 +226,19 @@ msgstr "Portfolio"
 msgid "Сообщения"
 msgstr "Messages"
 
-#: cvapp/templates/admin/_nav.html:30
+#: cvapp/templates/admin/_nav.html:33
+msgid "Посты"
+msgstr "Posts"
+
+#: cvapp/templates/admin/_nav.html:36
 msgid "Настройки"
 msgstr "Settings"
 
-#: cvapp/templates/admin/_nav.html:37
+#: cvapp/templates/admin/_nav.html:43
 msgid "Вход"
 msgstr "Sign In"
 
-#: cvapp/templates/admin/_nav.html:39
+#: cvapp/templates/admin/_nav.html:45
 msgid "Выход"
 msgstr "Sign Out"
 
@@ -213,103 +246,112 @@ msgstr "Sign Out"
 msgid "CV Admin Panel"
 msgstr ""
 
-#: cvapp/templates/admin/base.html:55
+#: cvapp/templates/admin/base.html:56
 msgid "Данные отсутствуют в таблице"
 msgstr "There is no any data in the table"
 
-#: cvapp/templates/admin/base.html:56
+#: cvapp/templates/admin/base.html:57
 msgid "Отображение _START_ для _END_ из _TOTAL_ записей"
 msgstr "Displaying _START_ for _END_ from _TOTAL_ rows"
 
-#: cvapp/templates/admin/base.html:57
+#: cvapp/templates/admin/base.html:58
 msgid "Показано с 0 по 0 из 0 записей"
 msgstr "Showed from 0 to 0 from 0 rows"
 
-#: cvapp/templates/admin/base.html:58
+#: cvapp/templates/admin/base.html:59
 msgid "(отфильтровано из _MAX_ всего записей)"
 msgstr "(filtered from _MAX_ total rows)"
 
-#: cvapp/templates/admin/base.html:61
+#: cvapp/templates/admin/base.html:62
 msgid "Показать _MENU_ записей"
 msgstr "Show _MENU_ rows"
 
-#: cvapp/templates/admin/base.html:62
+#: cvapp/templates/admin/base.html:63
 msgid "Загрузка..."
 msgstr "Loading..."
 
-#: cvapp/templates/admin/base.html:63
+#: cvapp/templates/admin/base.html:64
 msgid "Обработка..."
 msgstr "Processing..."
 
-#: cvapp/templates/admin/base.html:64
+#: cvapp/templates/admin/base.html:65
 msgid "Поиск:"
 msgstr "Search:"
 
-#: cvapp/templates/admin/base.html:65
+#: cvapp/templates/admin/base.html:66
 msgid "Совпадающих записей не найдено"
 msgstr "No matching rows found"
 
-#: cvapp/templates/admin/base.html:67
+#: cvapp/templates/admin/base.html:68
 msgid "Первая"
 msgstr "First"
 
-#: cvapp/templates/admin/base.html:68
+#: cvapp/templates/admin/base.html:69
 msgid "Последняя"
 msgstr "Last"
 
-#: cvapp/templates/admin/base.html:69
+#: cvapp/templates/admin/base.html:70
 msgid "Следующая"
 msgstr "Next"
 
-#: cvapp/templates/admin/base.html:70
+#: cvapp/templates/admin/base.html:71
 msgid "Предыдущая"
 msgstr "Previous"
 
-#: cvapp/templates/admin/base.html:73
+#: cvapp/templates/admin/base.html:74
 msgid ": активировать для сортировки столбца по возрастанию"
 msgstr ": activate to sort column ascending"
 
-#: cvapp/templates/admin/base.html:74
+#: cvapp/templates/admin/base.html:75
 msgid ": активировать для сортировки столбца по убыванию"
 msgstr ": activate to sort column descending"
+
+#: cvapp/templates/admin/categories.html:8
+msgid "Новая категория"
+msgstr "New category"
+
+#: cvapp/templates/admin/categories.html:10 cvapp/templates/admin/certs.html:10
+#: cvapp/templates/admin/education.html:10 cvapp/templates/admin/jobs.html:10
+#: cvapp/templates/admin/portfolio.html:10 cvapp/templates/admin/posts.html:10
+#: cvapp/templates/admin/settings.html:10 cvapp/templates/admin/skills.html:10
+msgid "Добавить"
+msgstr "Add"
+
+#: cvapp/templates/admin/categories.html:33 cvapp/templates/admin/certs.html:35
+#: cvapp/templates/admin/education.html:37 cvapp/templates/admin/jobs.html:37
+#: cvapp/templates/admin/portfolio.html:39 cvapp/templates/admin/posts.html:43
+#: cvapp/templates/admin/skills.html:37
+msgid "Редактирование"
+msgstr "Edit"
+
+#: cvapp/templates/admin/categories.html:36 cvapp/templates/admin/certs.html:38
+#: cvapp/templates/admin/education.html:43 cvapp/templates/admin/jobs.html:43
+#: cvapp/templates/admin/portfolio.html:48 cvapp/templates/admin/posts.html:50
+#: cvapp/templates/admin/settings.html:36 cvapp/templates/admin/skills.html:44
+msgid "Редактировать"
+msgstr "Edit"
+
+#: cvapp/templates/admin/categories.html:42 cvapp/templates/admin/certs.html:44
+#: cvapp/templates/admin/education.html:49
+#: cvapp/templates/admin/feedback.html:26 cvapp/templates/admin/jobs.html:49
+#: cvapp/templates/admin/portfolio.html:54 cvapp/templates/admin/posts.html:56
+#: cvapp/templates/admin/settings.html:42 cvapp/templates/admin/skills.html:50
+msgid "Подтвердите удаление"
+msgstr "Confirm delete"
+
+#: cvapp/templates/admin/categories.html:44 cvapp/templates/admin/certs.html:46
+#: cvapp/templates/admin/education.html:51
+#: cvapp/templates/admin/feedback.html:28 cvapp/templates/admin/jobs.html:51
+#: cvapp/templates/admin/portfolio.html:56 cvapp/templates/admin/posts.html:58
+#: cvapp/templates/admin/settings.html:44 cvapp/templates/admin/skills.html:52
+msgid "Удалить"
+msgstr "Delete"
 
 #: cvapp/templates/admin/certs.html:8 cvapp/templates/admin/education.html:8
 #: cvapp/templates/admin/jobs.html:8 cvapp/templates/admin/portfolio.html:8
 #: cvapp/templates/admin/settings.html:8 cvapp/templates/admin/skills.html:8
 msgid "Новый параметр"
 msgstr "New parameter"
-
-#: cvapp/templates/admin/certs.html:10 cvapp/templates/admin/education.html:10
-#: cvapp/templates/admin/jobs.html:10 cvapp/templates/admin/portfolio.html:10
-#: cvapp/templates/admin/settings.html:10 cvapp/templates/admin/skills.html:10
-msgid "Добавить"
-msgstr "Add"
-
-#: cvapp/templates/admin/certs.html:35 cvapp/templates/admin/education.html:37
-#: cvapp/templates/admin/jobs.html:37 cvapp/templates/admin/portfolio.html:39
-#: cvapp/templates/admin/skills.html:37
-msgid "Редактирование"
-msgstr "Edit"
-
-#: cvapp/templates/admin/certs.html:38 cvapp/templates/admin/education.html:43
-#: cvapp/templates/admin/jobs.html:43 cvapp/templates/admin/portfolio.html:48
-#: cvapp/templates/admin/settings.html:36 cvapp/templates/admin/skills.html:44
-msgid "Редактировать"
-msgstr "Edit"
-
-#: cvapp/templates/admin/certs.html:44 cvapp/templates/admin/education.html:49
-#: cvapp/templates/admin/feedback.html:26 cvapp/templates/admin/jobs.html:49
-#: cvapp/templates/admin/portfolio.html:54
-#: cvapp/templates/admin/settings.html:42 cvapp/templates/admin/skills.html:50
-msgid "Подтвердите удаление"
-msgstr "Confirm delete"
-
-#: cvapp/templates/admin/certs.html:46 cvapp/templates/admin/education.html:51
-#: cvapp/templates/admin/feedback.html:28 cvapp/templates/admin/jobs.html:51
-#: cvapp/templates/admin/portfolio.html:56
-#: cvapp/templates/admin/settings.html:44 cvapp/templates/admin/skills.html:52
-msgid "Удалить"
-msgstr "Delete"
 
 #: cvapp/templates/admin/education.html:30 cvapp/templates/admin/jobs.html:30
 msgid "по настоящее время"
@@ -322,6 +364,14 @@ msgstr "Authorize"
 #: cvapp/templates/admin/portfolio.html:17
 msgid "Порядок"
 msgstr "Order"
+
+#: cvapp/templates/admin/posts.html:8
+msgid "Новый пост"
+msgstr "New post"
+
+#: cvapp/templates/admin/posts.html:20
+msgid "Дата"
+msgstr "Date"
 
 #: cvapp/templates/admin/settings.html:33
 msgid "Редактирование параметра"
@@ -399,6 +449,11 @@ msgstr "CV"
 #: cvapp/templates/public/_nav.html:5
 msgid "Услуги"
 msgstr "Services"
+
+#: cvapp/templates/public/_nav.html:8 cvapp/templates/public/blog.html:11
+#: cvapp/templates/public/category.html:11 cvapp/templates/public/post.html:12
+msgid "Блог"
+msgstr "Blog"
 
 #: cvapp/templates/public/_portfolio.html:5
 msgid "Мои работы"
@@ -493,9 +548,26 @@ msgstr "Developing of Telegram chat-bots with complex logic."
 msgid "Техничский опыт в годах"
 msgstr "Technical experience in years"
 
-#: cvapp/templates/public/base.html:50
+#: cvapp/templates/public/base.html:58
 msgid "загрузка"
 msgstr "loading"
+
+#: cvapp/templates/public/blog.html:9
+msgid "Блог о разработке"
+msgstr "Dev blog"
+
+#: cvapp/templates/public/blog.html:11 cvapp/templates/public/category.html:11
+#: cvapp/templates/public/post.html:12
+msgid "Главная"
+msgstr "Home"
+
+#: cvapp/templates/public/blog.html:41
+msgid "Предыдущая страница"
+msgstr "Previous page"
+
+#: cvapp/templates/public/blog.html:42
+msgid "Следующая страница"
+msgstr "Next page"
 
 #~ msgid ": activate to sort column descending"
 #~ msgstr ""

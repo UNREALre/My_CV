@@ -8,28 +8,31 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         {% if not current_user.is_anonymous %}
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item {% if request.endpoint == 'education' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.education' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.education') }}">{{ _('Учеба') }} <span class="sr-only">({{ _('текущий') }})</span></a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'jobs' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.jobs' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.jobs') }}">{{ _('Работа') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'skills' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.skills' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.skills') }}">{{ _('Скилы') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'certs' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.certs' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.certs') }}">{{ _('Сертификаты') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'portfolio' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.portfolio' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.portfolio') }}">{{ _('Портфолио') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'feedback' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.feedback' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.feedback') }}">{{ _('Сообщения') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'blog' %}active{% endif %}">
-                    <a class="nav-link" href="{{ url_for('admin.blog') }}">{{ _('Блог') }}</a>
+                <li class="nav-item {% if request.endpoint == 'admin.categories' %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('admin.categories') }}">{{ _('Категории') }}</a>
                 </li>
-                <li class="nav-item {% if request.endpoint == 'settings' %}active{% endif %}">
+                <li class="nav-item {% if request.endpoint == 'admin.posts' %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('admin.posts') }}">{{ _('Посты') }}</a>
+                </li>
+                <li class="nav-item {% if request.endpoint == 'admin.settings' %}active{% endif %}">
                     <a class="nav-link" href="{{ url_for('admin.settings') }}">{{ _('Настройки') }}</a>
                 </li>
             </ul>

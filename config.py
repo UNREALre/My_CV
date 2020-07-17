@@ -28,6 +28,8 @@ class Config:
     UPLOAD_FOLDER = 'cvapp/static/uploads'
     UPLOAD_WEB_PATH = '/static/uploads'
 
+    POSTS_PER_PAGE = int(appConfig['blog']['per_page'].get())
+
     # Disable cache
     # TEMPLATES_AUTO_RELOAD = True
     # SEND_FILE_MAX_AGE_DEFAULT = 0

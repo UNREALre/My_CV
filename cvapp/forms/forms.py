@@ -1,10 +1,12 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField
 from flask_babel import lazy_gettext as _l
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField
+from wtforms import (StringField, PasswordField, BooleanField, SubmitField,
+                     TextAreaField, SelectField)
 from wtforms.fields.html5 import DateField
+from wtforms.ext.sqlalchemy.fields import QuerySelectMultipleField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Optional
-from cvapp.models import User
+from cvapp.models import User, Category
 
 
 class CvBaseForm(FlaskForm):
@@ -99,3 +101,21 @@ class FeedbackForm(CvBaseForm):
     email = StringField(_l('E-mail'), validators=[DataRequired(), Email()])
     message = TextAreaField(_l('Сообщение'), validators=[DataRequired()])
     submit = SubmitField(_l('Отправить сообщение'))
+
+
+class BlogPostForm(CvBaseForm):
+    name = StringField(_l('Заглавие'), validators=[DataRequired()])
+    slug = StringField(_l('Slug'), validators=[DataRequired()])
+    description = TextAreaField(_l('Description'), validators=[Optional()])
+    keywords = TextAreaField(_l('Keywords'), validators=[Optional()])
+    text = TextAreaField(_l('Текст'), validators=[DataRequired()])
+    categories = QuerySelectMultipleField(_l('Категории'),
+                                          query_factory=lambda: Category.query.order_by(Category.name.asc()),
+                                          get_label='name', validators=[DataRequired()])
+    submit = SubmitField(_l('Сохранить'))
+
+
+class BlogCategoryForm(CvBaseForm):
+    name = StringField(_l('Наименование'), validators=[DataRequired()])
+    slug = StringField(_l('Slug'), validators=[DataRequired()])
+    submit = SubmitField(_l('Сохранить'))

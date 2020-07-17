@@ -35,3 +35,15 @@
     display: block;
     color: #FFF;
 }
+
+.categories {
+    margin-top: 40px;
+}
+.categories li {
+    display: inline-block;
+}
+.categories li a {
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px 10px;
+}

@@ -5,8 +5,8 @@
         <a href="#" class="btn btn-primary"
            data-toggle="modal"
            data-target="#objectModal"
-           data-title="{{ _('Новый параметр') }}"
-           data-action="{{ url_for('admin.certs') }}"
+           data-title="{{ _('Новая категория') }}"
+           data-action="{{ url_for('admin.categories') }}"
         >{{ _('Добавить') }}</a>
     </div>
 
@@ -15,8 +15,7 @@
             <tr>
                 <th>#</th>
                 <th>{{ _('Наименование') }}</th>
-                <th>{{ _('Ссылка') }}</th>
-                <th>{{ _('Изображение') }}</th>
+                <th>{{ _('Slug') }}</th>
                 <th>&nbsp;</th>
             </tr>
         </thead>
@@ -25,22 +24,21 @@
                 <tr>
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.link }}</td>
-                    <td>{% if item.image %}<img src="{{ config.UPLOAD_WEB_PATH }}/{{ item.image  }}" alt="" style="max-width:300px;">{% endif %}</td>
+                    <td>{{ item.slug }}</td>
                     <td>
                         <a href="#"
                            data-toggle="modal"
                            data-target="#objectModal"
-                           data-action="{{ url_for('admin.edit_cert', cert_id=item.id) }}"
+                           data-action="{{ url_for('admin.edit_category', category_id=item.id) }}"
                            data-title="{{ _('Редактирование') }}"
                            data-name="{{ item.name }}"
-                           data-link="{{ item.link }}"
+                           data-slug="{{ item.slug }}"
                         ><img src="{{ url_for('static', filename='admin/icons/pencil-square.svg') }}" alt="" width="16" height="16" title="{{ _('Редактировать') }}"></a>
                         &nbsp;&nbsp;&nbsp;
                         <a href="#"
                            data-toggle="modal"
                            data-target="#deleteObjectModal"
-                           data-action="{{ url_for('admin.delete_cert', cert_id=item.id) }}"
+                           data-action="{{ url_for('admin.delete_category', category_id=item.id) }}"
                            data-title="{{ _('Подтвердите удаление') }}"
                            data-id={{ item.id }}
                         ><img src="{{ url_for('static', filename='admin/icons/trash.svg') }}" alt="" width="16" height="16" title="{{ _('Удалить') }}"></a>
@@ -70,14 +68,9 @@
                             {% if form.name.errors %}{{ error.list(form.name.errors) }}{% endif %}
                         </div>
                         <div class="form-group">
-                            {{ form.link.label }} {% if form.link.flags.required %}<span class="req">*</span>{% endif %}
-                            {{ form.link(class='form-control') }}
-                            {% if form.link.errors %}{{ error.list(form.link.errors) }}{% endif %}
-                        </div>
-                        <div class="form-group">
-                            {{ form.image_file.label }} {% if form.image_file.flags.required %}<span class="req">*</span>{% endif %}
-                            {{ form.image_file(class='form-control') }}
-                            {% if form.image_file.errors %}{{ error.list(form.image_file.errors) }}{% endif %}
+                            {{ form.slug.label }} {% if form.slug.flags.required %}<span class="req">*</span>{% endif %}
+                            {{ form.slug(class='form-control') }}
+                            {% if form.slug.errors %}{{ error.list(form.slug.errors) }}{% endif %}
                         </div>
                     </div>
                     <div class="modal-footer">

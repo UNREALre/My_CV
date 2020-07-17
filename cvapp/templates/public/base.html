@@ -4,9 +4,15 @@
 
 	<!-- Basic -->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>{{ settings.main_page_title }}</title>
-	<meta name="description" content="">
-	<meta name="keywords" content="">
+    {% set title = settings.main_page_title %}
+    {% if category and category.name %}
+        {% set title = category.name %}
+    {% elif post and post.name %}
+        {% set title = post.name %}
+    {% endif %}
+	<title>{{ title }}</title>
+	<meta name="description" content="{{ post.description if post else '' }}">
+	<meta name="keywords" content="{{ post.keywords if post else '' }}">
 
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -21,6 +27,8 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/magnific-popup.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/animate.css') }}" />
 	<link rel="stylesheet" href="{{ url_for('static', filename='public/css/template-dark/dark.css') }}" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='public/libs/highlight/styles/default.css') }}">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='public/css/custom.css', v=times['public/css/custom.css']) }}" />
 
@@ -71,23 +79,7 @@
 		<!-- Wrapper -->
 		<div class="wrapper">
 
-            {% include 'public/_intro.html' %}
-
-            {% include 'public/_about.html' %}
-
-            {% include 'public/_exp_and_edu.html' %}
-
-            {% include 'public/_skills.html' %}
-
-			{% include 'public/_languages.html' %}
-
-            {% include 'public/_certification.html' %}
-
-            {% include 'public/_services.html' %}
-
-            {% include 'public/_portfolio.html' %}
-
-            {% include 'public/_contacts.html' %}
+            {% block body %}{% endblock %}
 
 		</div>
 
@@ -131,6 +123,8 @@
 	<!-- Main Scripts -->
 	<script src="{{ url_for('static', filename='public/js/glitche-scripts.js') }}"></script>
 
+    <script src="{{ url_for('static', filename='public/libs/highlight/highlight.pack.js') }}"></script>
+
     <script>
         $("document").ready(function(){
             if (window.location.hash === "#form-flash") {
@@ -139,5 +133,7 @@
             }
         });
     </script>
+
+    {% block javascript %}{% endblock %}
 </body>
 </html>

@@ -5,6 +5,7 @@
         <title>{{ _('CV Admin Panel') }}</title>
 
         <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/bootstrap.min.css', v=times['admin/css/bootstrap.min.css']) }}">
+
         <link rel="stylesheet" href="{{ url_for('static', filename='admin/css/custom.css', v=times['admin/css/custom.css']) }}">
     </head>
 <body>
@@ -89,6 +90,10 @@
 
                 $.each(button.data(), function(i, e) {
                    if (form.find("#" + i).length) {
+                       if (form.find("#" + i).attr('multiple')) {
+                           e = e.split(',');
+                       }
+
                        form.find("#" + i).val(e);
                    }
                 });

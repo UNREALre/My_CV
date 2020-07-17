@@ -109,20 +109,26 @@ class Feedback(db.Model):
 
 
 post_categories = db.Table('post_categories',
-                           db.Column('post_id', db.BigInteger, db.ForeignKey('post.id')),
-                           db.Column('category_id', db.BigInteger, db.ForeignKey('category.id'))
+                           db.Column('post_id', db.BigInteger, db.ForeignKey('posts.id')),
+                           db.Column('category_id', db.BigInteger, db.ForeignKey('categories.id'))
                            )
 
 
 class Category(db.Model):
+    __tablename__ = 'categories'  # just for practice, that is how we can change table name in any model Class
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
-    slug = db.Column(db.String(200), nullable=False)
+    slug = db.Column(db.String(200), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<Category #{} - {}>'.format(self.id, self.name)
 
 
 class Post(db.Model):
+    __tablename__ = 'posts'  # just for practice, that is how we can change table name in any model Class
     id = db.Column(db.BigInteger, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
+    slug = db.Column(db.String(200), unique=True, nullable=False)
     description = db.Column(db.Text, nullable=True)
     keywords = db.Column(db.Text, nullable=True)
     text = db.Column(db.Text, nullable=False)
@@ -130,3 +136,6 @@ class Post(db.Model):
         'Category', secondary=post_categories, lazy='subquery', backref=db.backref('posts', lazy=True)
     )
     date = db.Column(db.DateTime, default=datetime.utcnow())
+
+    def __repr__(self):
+        return '<Post #{} - {}>'.format(self.id, self.name)
