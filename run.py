@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from cvapp import app, db, cli
 from cvapp.models import User
 
