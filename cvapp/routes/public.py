@@ -32,7 +32,7 @@ def index():
         db.session.commit()
         flash(_l('Сообщение было успешно отослано!'))
 
-        return redirect(url_for('index', _anchor='form-flash'))
+        return redirect(url_for('public.index', _anchor='form-flash'))
 
     lang = session.get('lang') if not request.args.get('lang') else request.args.get('lang')
     lang = 'ru' if not lang else lang
