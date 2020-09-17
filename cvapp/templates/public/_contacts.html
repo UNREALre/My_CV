@@ -42,6 +42,11 @@
 								{{ form.message(placeholder=form.message.label.text) }}
                                 {% if form.message.errors %}{{ error.list(form.message.errors) }}{% endif %}
 							</div>
+
+                            <div class="group-val ct-gr rcp-wrapper">
+                                <div class="g-recaptcha" data-sitekey="6LeeSc0ZAAAAALUh7L1mfbqUvbqRmn-xHrjsS2FO"></div>
+                            </div>
+
                             {{ form.submit(class='btn fill') }}
 						</form>
 

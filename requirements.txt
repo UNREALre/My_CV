@@ -9,3 +9,4 @@ flask-login
 email-validator
 flask-babel
 flask-mail
+requests

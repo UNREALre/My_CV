@@ -2,6 +2,7 @@
 from flask import render_template, request, session, flash, redirect, url_for, Blueprint
 from flask_babel import lazy_gettext as _l
 from flask_login import current_user
+import requests
 from cvapp import app, db
 from cvapp.helpers import get_settings, css_js_update_time
 from cvapp.models import Education, Job, Skills, Certification, Portfolio, Feedback, Post, Category
@@ -19,18 +20,26 @@ def index():
     form = FeedbackForm()
 
     if form.validate_on_submit():
-        msg = '<b>Имя</b>: {}<br><br><b>Email</b>: {}<br><br><b>Сообщение</b>:<br>{}'.format(
-            form.name.data, form.email.data, form.message.data
-        )
-        send_email(_l('Сообщение с сайта Podrabinovich.RU'),
-                   'noreply@podrabinovich.ru',
-                   app.config['ADMINS'],
-                   msg, msg)
+        rcp_info = {
+            'secret': app.config['RECAPTCHA_SECRET'],
+            'response': request.form['g-recaptcha-response']
+        }
+        captcha_resp = requests.post('https://www.google.com/recaptcha/api/siteverify', data=rcp_info)
+        if not captcha_resp.json().get('success'):
+            flash(_l('Кажется, Вы робот!'))
+        else:
+            msg = '<b>Имя</b>: {}<br><br><b>Email</b>: {}<br><br><b>Сообщение</b>:<br>{}'.format(
+                form.name.data, form.email.data, form.message.data
+            )
+            send_email(_l('Сообщение с сайта Podrabinovich.RU'),
+                       'noreply@podrabinovich.ru',
+                       app.config['ADMINS'],
+                       msg, msg)
 
-        feedback = Feedback(name=form.name.data, email=form.email.data, message=form.message.data)
-        db.session.add(feedback)
-        db.session.commit()
-        flash(_l('Сообщение было успешно отослано!'))
+            feedback = Feedback(name=form.name.data, email=form.email.data, message=form.message.data)
+            db.session.add(feedback)
+            db.session.commit()
+            flash(_l('Сообщение было успешно отослано!'))
 
         return redirect(url_for('public.index', _anchor='form-flash'))
 

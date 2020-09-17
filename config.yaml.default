@@ -3,6 +3,7 @@ logLevel: 0 # DEBUG
 
 app:
     secret: something
+    recaptcha_secret: something
 
 db:
   name: name

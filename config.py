@@ -30,6 +30,8 @@ class Config:
 
     POSTS_PER_PAGE = int(appConfig['blog']['per_page'].get())
 
+    RECAPTCHA_SECRET = appConfig['app']['recaptcha_secret'].get()
+
     # Disable cache
     # TEMPLATES_AUTO_RELOAD = True
     # SEND_FILE_MAX_AGE_DEFAULT = 0
